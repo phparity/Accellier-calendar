@@ -1,6 +1,11 @@
-const EventComponent = () => {
+/* eslint-disable react/prop-types */
+
+const EventComponent = ({ event }) => {
+
   const eventDetails = {
-    eventName: "Sample Event",
+    eventName: event.event._def.title,
+    day: event.event._def.extendedProps.day,
+    isOneDayEvent: event.event._def.extendedProps.isOneDayEvent,
     eventTime: "12:00 PM - 3:00 PM",
     eventVenue: "36 Guild Street London, UK",
     eventManager: "John Doe",
@@ -14,13 +19,17 @@ const EventComponent = () => {
     { name: "Staffing", numbers: " 2   7    8" },
   ];
   return (
-    <div className=" bg-white text-black   border-dotted  border-[2px] border-separate  flex flex-col   border-[#5669FF] ">
-      <div className=" border-b-[2px] py-3 px-2">
+    <div className=" bg-white text-black    border-separate  flex flex-col border-t-4 border-[#5669FF]   ">
+      <div className=" border-b-[2px]  py-3 px-2">
         <div className=" flex justify-between items-start">
           <h2 className="text-lg font-semibold flex">
             {eventDetails.eventName}
           </h2>
-          <p className=" bg-[#F6A609B2]/70 py-[3px] px-2 rounded-lg">Day 1</p>
+          {!eventDetails.isOneDayEvent && (
+            <p className=" bg-[#F6A609B2]/70 py-[3px] px-2 rounded-lg">
+              Day {eventDetails.day}
+            </p>
+          )}
         </div>
         <div className="flex items-center ">
           <svg
@@ -70,159 +79,171 @@ const EventComponent = () => {
           <p> {eventDetails.eventVenue}</p>
         </div>
       </div>
-      <div className=" border-b-[2px] items-center flex gap-2 py-3 px-2">
-        <div>
-          <img src="manager.png" alt="manager" className=" w-8 rounded-full" />
-        </div>
-        <div className=" flex flex-col gap-0">
-          <strong className=" font-bold">{eventDetails.eventManager}</strong>
-          <p className=" text-slate-500">Event Manager </p>
-        </div>
-      </div>
-      <div className=" border-b-[2px] flex justify-around py-3 px-2">
-        {eventDetails.logos.map((logo, index) => (
-          <img
-            key={index}
-            src={logo}
-            alt={`Logo ${index + 1}`}
-            className="logo w-8 h-8 object-contain"
-          />
-        ))}
-      </div>    
-      <div className=" border-b-[2px] flex flex-col justify-around gap-3 py-3 px-2">
-        {otherFields.map((field) => (
-          <div key={field.name} className=" flex justify-around items-center  ">
-            <div className=" w-1/5">
-              <p>{field.name}</p>
+      {eventDetails.day <= 1 && (
+        <>
+          <div className=" border-b-[2px] items-center flex gap-2 py-3 px-2">
+            <div>
+              <img
+                src="manager.png"
+                alt="manager"
+                className=" w-8 rounded-full"
+              />
             </div>
-            <div className="">
-              <pre>{field.numbers}</pre>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="100%"
-                height="10"
-                viewBox="0 0 88 10"
-                fill="none"
-              >
-                <g filter="url(#filter0_d_1_391)">
-                  <path
-                    d="M40.3368 0.0497589H38.3866L42.457 3.52724L38.3866 7.00471H40.3368L44.4048 3.52724L40.3368 0.0497589Z"
-                    fill="#FFCD1C"
-                  />
-                  <path
-                    d="M35.1855 0.0497589H33.2377L37.3081 3.52724L33.2377 7.00471H35.1855L39.2559 3.52724L35.1855 0.0497589Z"
-                    fill="#FFCD1C"
-                  />
-                  <path
-                    d="M30.0373 0.0497437H28.0895L32.1599 3.52722L28.0895 7.0047H30.0373L34.1077 3.52722L30.0373 0.0497437Z"
-                    fill="#FFCD1C"
-                  />
-                  <path
-                    d="M14.2536 0.0497437H12.3058L16.3762 3.52722L12.3058 7.0047H14.2536L18.324 3.52722L14.2536 0.0497437Z"
-                    fill="#D44949"
-                  />
-                  <path
-                    d="M9.10704 0.0497437H7.1569L11.2273 3.52722L7.1569 7.0047H9.10704L13.1751 3.52722L9.10704 0.0497437Z"
-                    fill="#D44949"
-                  />
-                  <path
-                    d="M3.95566 0.0497589H2.00785L6.07821 3.52724L2.00785 7.00471H3.95566L8.02602 3.52724L3.95566 0.0497589Z"
-                    fill="#D44949"
-                  />
-                  <path
-                    d="M24.5538 0.0497437H22.6037L26.674 3.52722L22.6037 7.0047H24.5538L28.6218 3.52722L24.5538 0.0497437Z"
-                    fill="#D44949"
-                  />
-                  <path
-                    d="M19.4026 0.0497437H17.4547L21.5251 3.52722L17.4547 7.0047H19.4026L23.4729 3.52722L19.4026 0.0497437Z"
-                    fill="#D44949"
-                  />
-                  <path
-                    d="M45.1464 0.0497437H43.1986L47.2689 3.52722L43.1986 7.0047H45.1464L49.2167 3.52722L45.1464 0.0497437Z"
-                    fill="#1CC88A"
-                  />
-                  <path
-                    d="M71.6317 0.0497589H69.6839L73.7542 3.52724L69.6839 7.00471H71.6317L75.702 3.52724L71.6317 0.0497589Z"
-                    fill="#1CC88A"
-                  />
-                  <path
-                    d="M55.444 0.0497589H53.4962L57.5666 3.52724L53.4962 7.00471H55.444L59.5144 3.52724L55.444 0.0497589Z"
-                    fill="#1CC88A"
-                  />
-                  <path
-                    d="M81.9295 0.0497589H79.9817L84.0521 3.52724L79.9817 7.00471H81.9295L85.9999 3.52724L81.9295 0.0497589Z"
-                    fill="#1CC88A"
-                  />
-                  <path
-                    d="M66.4859 0.0497589H64.5357L68.6061 3.52724L64.5357 7.00471H66.4859L70.5539 3.52724L66.4859 0.0497589Z"
-                    fill="#1CC88A"
-                  />
-                  <path
-                    d="M50.2974 0.0497589H48.3473L52.4177 3.52724L48.3473 7.00471H50.2974L54.3655 3.52724L50.2974 0.0497589Z"
-                    fill="#1CC88A"
-                  />
-                  <path
-                    d="M76.7829 0.0497589H74.8328L78.9031 3.52724L74.8328 7.00471H76.7829L80.851 3.52724L76.7829 0.0497589Z"
-                    fill="#1CC88A"
-                  />
-                  <path
-                    d="M61.3338 0.0497589H59.386L63.4564 3.52724L59.386 7.00471H61.3338L65.4042 3.52724L61.3338 0.0497589Z"
-                    fill="#1CC88A"
-                  />
-                </g>
-                <defs>
-                  <filter
-                    id="filter0_d_1_391"
-                    x="0.703797"
-                    y="0.0497437"
-                    width="86.6001"
-                    height="9.56308"
-                    filterUnits="userSpaceOnUse"
-                    colorInterpolationFilters="sRGB"
-                  >
-                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                    <feColorMatrix
-                      in="SourceAlpha"
-                      type="matrix"
-                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                      result="hardAlpha"
-                    />
-                    <feOffset dy="1.30405" />
-                    <feGaussianBlur stdDeviation="0.652027" />
-                    <feComposite in2="hardAlpha" operator="out" />
-                    <feColorMatrix
-                      type="matrix"
-                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0"
-                    />
-                    <feBlend
-                      mode="normal"
-                      in2="BackgroundImageFix"
-                      result="effect1_dropShadow_1_391"
-                    />
-                    <feBlend
-                      mode="normal"
-                      in="SourceGraphic"
-                      in2="effect1_dropShadow_1_391"
-                      result="shape"
-                    />
-                  </filter>
-                </defs>
-              </svg>
+            <div className=" flex flex-col gap-0">
+              <strong className=" font-bold">
+                {eventDetails.eventManager}
+              </strong>
+              <p className=" text-slate-500">Event Manager </p>
             </div>
           </div>
-        ))}
-      </div>
-      <div className=" border-b-[2px] flex border justify-around gap-3 py-3 px-2">
-        <div className="pr-3 flex flex-col justify-center items-center  border-r-2">
-          <p> Forecast Sales </p>
-          <strong className=" "> £1,000,000</strong>
-        </div>
-        <div className=" flex flex-col justify-center items-center  ">
-          <p>  Forecast Profit </p>
-          <strong className=" "> £1,000,000</strong>
-        </div>
-     
-      </div>
+          <div className=" border-b-[2px] flex justify-around py-3 px-2">
+            {eventDetails.logos.map((logo, index) => (
+              <img
+                key={index}
+                src={logo}
+                alt={`Logo ${index + 1}`}
+                className="logo w-8 h-8 object-contain"
+              />
+            ))}
+          </div>
+          <div className=" border-b-[2px] flex flex-col justify-around gap-3 py-3 px-2">
+            {otherFields.map((field) => (
+              <div
+                key={field.name}
+                className=" flex justify-around items-center  "
+              >
+                <div className=" w-1/5">
+                  <p>{field.name}</p>
+                </div>
+                <div className="">
+                  <pre>{field.numbers}</pre>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="100%"
+                    height="10"
+                    viewBox="0 0 88 10"
+                    fill="none"
+                  >
+                    <g filter="url(#filter0_d_1_391)">
+                      <path
+                        d="M40.3368 0.0497589H38.3866L42.457 3.52724L38.3866 7.00471H40.3368L44.4048 3.52724L40.3368 0.0497589Z"
+                        fill="#FFCD1C"
+                      />
+                      <path
+                        d="M35.1855 0.0497589H33.2377L37.3081 3.52724L33.2377 7.00471H35.1855L39.2559 3.52724L35.1855 0.0497589Z"
+                        fill="#FFCD1C"
+                      />
+                      <path
+                        d="M30.0373 0.0497437H28.0895L32.1599 3.52722L28.0895 7.0047H30.0373L34.1077 3.52722L30.0373 0.0497437Z"
+                        fill="#FFCD1C"
+                      />
+                      <path
+                        d="M14.2536 0.0497437H12.3058L16.3762 3.52722L12.3058 7.0047H14.2536L18.324 3.52722L14.2536 0.0497437Z"
+                        fill="#D44949"
+                      />
+                      <path
+                        d="M9.10704 0.0497437H7.1569L11.2273 3.52722L7.1569 7.0047H9.10704L13.1751 3.52722L9.10704 0.0497437Z"
+                        fill="#D44949"
+                      />
+                      <path
+                        d="M3.95566 0.0497589H2.00785L6.07821 3.52724L2.00785 7.00471H3.95566L8.02602 3.52724L3.95566 0.0497589Z"
+                        fill="#D44949"
+                      />
+                      <path
+                        d="M24.5538 0.0497437H22.6037L26.674 3.52722L22.6037 7.0047H24.5538L28.6218 3.52722L24.5538 0.0497437Z"
+                        fill="#D44949"
+                      />
+                      <path
+                        d="M19.4026 0.0497437H17.4547L21.5251 3.52722L17.4547 7.0047H19.4026L23.4729 3.52722L19.4026 0.0497437Z"
+                        fill="#D44949"
+                      />
+                      <path
+                        d="M45.1464 0.0497437H43.1986L47.2689 3.52722L43.1986 7.0047H45.1464L49.2167 3.52722L45.1464 0.0497437Z"
+                        fill="#1CC88A"
+                      />
+                      <path
+                        d="M71.6317 0.0497589H69.6839L73.7542 3.52724L69.6839 7.00471H71.6317L75.702 3.52724L71.6317 0.0497589Z"
+                        fill="#1CC88A"
+                      />
+                      <path
+                        d="M55.444 0.0497589H53.4962L57.5666 3.52724L53.4962 7.00471H55.444L59.5144 3.52724L55.444 0.0497589Z"
+                        fill="#1CC88A"
+                      />
+                      <path
+                        d="M81.9295 0.0497589H79.9817L84.0521 3.52724L79.9817 7.00471H81.9295L85.9999 3.52724L81.9295 0.0497589Z"
+                        fill="#1CC88A"
+                      />
+                      <path
+                        d="M66.4859 0.0497589H64.5357L68.6061 3.52724L64.5357 7.00471H66.4859L70.5539 3.52724L66.4859 0.0497589Z"
+                        fill="#1CC88A"
+                      />
+                      <path
+                        d="M50.2974 0.0497589H48.3473L52.4177 3.52724L48.3473 7.00471H50.2974L54.3655 3.52724L50.2974 0.0497589Z"
+                        fill="#1CC88A"
+                      />
+                      <path
+                        d="M76.7829 0.0497589H74.8328L78.9031 3.52724L74.8328 7.00471H76.7829L80.851 3.52724L76.7829 0.0497589Z"
+                        fill="#1CC88A"
+                      />
+                      <path
+                        d="M61.3338 0.0497589H59.386L63.4564 3.52724L59.386 7.00471H61.3338L65.4042 3.52724L61.3338 0.0497589Z"
+                        fill="#1CC88A"
+                      />
+                    </g>
+                    <defs>
+                      <filter
+                        id="filter0_d_1_391"
+                        x="0.703797"
+                        y="0.0497437"
+                        width="86.6001"
+                        height="9.56308"
+                        filterUnits="userSpaceOnUse"
+                        colorInterpolationFilters="sRGB"
+                      >
+                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                        <feColorMatrix
+                          in="SourceAlpha"
+                          type="matrix"
+                          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                          result="hardAlpha"
+                        />
+                        <feOffset dy="1.30405" />
+                        <feGaussianBlur stdDeviation="0.652027" />
+                        <feComposite in2="hardAlpha" operator="out" />
+                        <feColorMatrix
+                          type="matrix"
+                          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0"
+                        />
+                        <feBlend
+                          mode="normal"
+                          in2="BackgroundImageFix"
+                          result="effect1_dropShadow_1_391"
+                        />
+                        <feBlend
+                          mode="normal"
+                          in="SourceGraphic"
+                          in2="effect1_dropShadow_1_391"
+                          result="shape"
+                        />
+                      </filter>
+                    </defs>
+                  </svg>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className=" border-b-[2px] flex border justify-around gap-3 py-3 px-2">
+            <div className="pr-3 flex flex-col justify-center items-center  border-r-2">
+              <p> Forecast Sales </p>
+              <strong className=" "> £1,000,000</strong>
+            </div>
+            <div className=" flex flex-col justify-center items-center  ">
+              <p> Forecast Profit </p>
+              <strong className=" "> £1,000,000</strong>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };

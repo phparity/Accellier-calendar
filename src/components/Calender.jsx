@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // import { useState } from "react";
 // import FullCalendar from "@fullcalendar/react";
 // import dayGridPlugin from "@fullcalendar/daygrid";
@@ -64,12 +65,46 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import EventComponent from "./Events";
 const INITIAL_EVENTS = [
-  { title: "Event 1", start: "2023-12-29" },
-  { title: "Event 3", start: "2023-12-29" },
-  { title: "Event 2", start: "2023-12-25" },
-  { title: "Event 2", start: "2023-12-26" },
+  { title: "Event 1", start: "2024-01-01" },
+  { title: "Event 2", start: "2024-01-03" },
+  { title: "Event 2", start: "2024-01-02" },
+  { title: "Event 2", start: "2024-01-04" },
+  { title: "Event 3", start: "2024-01-04" },
+  { title: "Event 3", start: "2024-01-03" },
+
   // Add more events as needed
 ];
+INITIAL_EVENTS.sort((eventA, eventB) => {
+  const dateA = new Date(eventA.start);
+  const dateB = new Date(eventB.start);
+  return dateA - dateB;
+});
+
+const events = [];
+
+INITIAL_EVENTS.forEach((e) => {
+  if (events.some((e1) => e1.title === e.title)) {
+    const lastIndex = events.findLastIndex((e2) => e2.title === e.title);
+    e.day = +events[lastIndex].day + 1;
+    events.push(e);
+    return;
+  }
+  e.day = 1;
+  events.push(e);
+});
+
+INITIAL_EVENTS.forEach((e) => {
+  if (
+    events.findIndex((e1) => e1.title === e.title) ===
+    events.findLastIndex((e1) => e1.title === e.title)
+  ) {
+    e.isOneDayEvent = true;
+    return;
+  }
+  e.isOneDayEvent = false;
+});
+
+
 
 const DemoApp = () => {
   const handleEventClick = (clickInfo) => {
@@ -86,14 +121,11 @@ const DemoApp = () => {
     console.log(events);
   };
 
-  
-
   return (
     <div className="demo-app">
       <div className="demo-app-main">
         <FullCalendar
           plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-         
           customButtons={{
             testButton: {
               text: "test!",
@@ -112,7 +144,7 @@ const DemoApp = () => {
           dayMaxEvents={true}
           dayHeaders={true}
           events={INITIAL_EVENTS}
-          eventContent={EventComponent}
+          eventContent={(event) => <EventComponent event={event} />}
           eventClick={handleEventClick}
           eventsSet={handleEvents}
         />
