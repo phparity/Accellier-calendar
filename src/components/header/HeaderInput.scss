@@ -1,0 +1,36 @@
+@import '../../common-style/variable.scss';
+
+.border_input {
+    font-size: 14px;
+    line-height: 20px;
+    font-family: $font-family-Normal;
+    font-weight: 400;
+    width: 100%;
+    background-color: $White;
+    color: $Black;
+    border: 1px solid $Border-color3;
+    padding: 10px 20px;
+    transition: .3s;
+    -webkit-transition: 4px;
+    -moz-transition: 4px;
+    -ms-transition: 4px;
+    -o-transition: 4px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    @media (max-width:1700px){
+        font-size: 11px;
+        line-height: 15px;
+        letter-spacing: -0.11462754756212234px;
+        padding: 7.5px 12px;
+    }
+    &:focus{
+        border: 1px solid $Primary;
+        outline: none;
+    }
+    &::placeholder {
+        color: $Text-color3;
+    }
+}

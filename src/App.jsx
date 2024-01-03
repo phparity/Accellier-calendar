@@ -1,11 +1,16 @@
-import Calendar from "./components/Calender";
+import { Route, Routes } from "react-router-dom";
+
+import Header from "./components/header/Header";
+import EventManagementPage from "./pages/EventManagementPage/EventManagementPage";
 
 function App() {
   return (
-    <div>
-      <h1 className=" font-extrabold">Event Management System</h1>
-      <Calendar />
-    </div>
+    <>
+      <Header />
+      <Routes>
+        <Route path="/" element={<EventManagementPage />} />
+      </Routes>
+    </>
   );
 }
 

@@ -1,0 +1,120 @@
+/* EventForm.css */
+@import "../../components/common-style/variable.scss";
+// EventForm.scss
+// EventForm.scss
+
+.event-form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #f8f9fc;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.12),
+    0px 7px 14px 0px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  .event-form-header {
+    display: flex;
+    padding: 20px 13px 20px 15px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    h1 {
+      color: #30313d;
+      font-family: Verdana;
+      font-size: 25px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 20px; /* 80% */
+      flex: 1 0 0;
+    }
+  }
+
+  .event-form {
+    display: flex;
+    padding: 10px 0px 20px 0px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    .eventInfo {
+      display: grid;
+      grid-template-columns: auto auto;
+      gap: 10px;
+    }
+  }
+
+  .dropdown-buttons {
+    display: flex;
+    margin-bottom: 5px;
+
+    div {
+      cursor: pointer;
+      padding: 1px;
+      margin-right: 10px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: #45a049;
+      }
+    }
+  }
+
+  h2 {
+    margin-top: 2px;
+  }
+
+  .form-field {
+    margin-bottom: 1px;
+
+    &.two-fields-in-row {
+      display: flex;
+
+      div {
+        flex: 1;
+        margin-right: 10px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+  }
+
+  button[type="submit"] {
+    background-color: #008cba;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #0077a8;
+    }
+  }
+}

@@ -1,3 +1,76 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* YourStyles.css */
+
+.custom-toolbar {
+  background-color: #ff0000;
+}
+
+.custom-button-group {
+  margin-right: 10px;
+}
+
+.custom-button {
+  background-color: #3498db;
+  color: #ffffff;
+}
+
+.custom-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333333;
+}
+.fc-button-group {
+  width: 100%;
+}
+
+.fc-icon-chevron-right {
+  position: absolute;
+  right: -93vw;
+  top: 93px;
+  float: right;
+  border-radius: 20px;
+  z-index: 10;
+  background: #4e73df;
+}
+.fc-icon-chevron-left {
+  position: absolute;
+
+  float: left;
+  top: 93px;
+  border-radius: 20px;
+  z-index: 10;
+  background: #4e73df;
+}
+
+th .fc-col-header-cell .fc-scrollgrid-sync-inner {
+  margin-top: 15px;
+}
+.create-event {
+  color: #ff0000;
+}
+
+/* YourCalendarComponent.css */
+.custom-create-button {
+  background-color: red;
+  color: white;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.fc-button-primary {
+  background-color: #fff;
+}
+.fc {
+  z-index: -10;
+}
+
+.fc-daygrid-day-frame,
+.fc-scrollgrid-sync-inner,
+.fc-daygrid-day-bg,
+.fc-day, .fc-day-fri, .fc-day-future ,.fc-daygrid-day,.fc-col-header  {
+  position: relative;
+  /* z-index: -100; */
+}

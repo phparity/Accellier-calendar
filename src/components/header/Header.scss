@@ -1,0 +1,257 @@
+@import '../common-style/variable.scss';
+
+.header_main{
+    padding: 20px 38px 19px 30px;
+    background-color: $Light-Bg3;
+    @media (max-width:1700px){
+        padding: 15px 28px 14px 22px;
+    }
+    @media (max-width:770px){
+        position: relative;
+        padding: 16px 12px 69px 12px;
+    }
+    .wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .logo_search_menu{
+            display: flex;
+            align-items: center;
+            gap: 137px;
+            @media (max-width:1700px){
+                gap: 132px;
+            }
+            @media (max-width:992px){
+                gap: 20px;
+            }
+        }
+        .logo_menu{
+            display: flex;
+            gap: 26px;
+            @media (max-width:1700px){
+                gap: 20px;
+            }
+            @media (max-width:770px){
+                gap: 10px;
+            }
+            .menu_otr{
+                display: flex;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+                padding: 6px 0 4px 0;
+                @media (max-width:1700px){
+                    padding: 5px 0 2px 0;
+                }
+                @media (max-width:770px){
+                    padding: 2px 0 0 0;
+                }
+                .menu_icon{
+                    width: 21.79px;
+                    height: 24.21px;
+                    object-fit: contain;
+                    object-position: center;
+                    @media (max-width:1700px){
+                        width: 16.34px;
+                        height: 18.16px;
+                    }
+                    @media (max-width:770px){
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+            }
+            .logo_otr{
+                display: flex;
+                .logo_img{
+                    width: 145.26px;
+                    height: 32.37px;
+                    object-fit: contain;
+                    object-position: left;
+                    @media (max-width:1700px){
+                        width: 108.95px;
+                        height: 24.28px;
+                    }
+                    @media (max-width:770px){
+                        width: 95px;
+                        height: 21.17px;
+                    }
+                }
+            }
+        }
+        .search_otr{
+            position: relative;
+            width: 423.68px;
+            @media (max-width:1700px){
+                width: 317.76px;
+            }
+            @media (max-width:770px){
+                position: absolute;
+                bottom: 14px;
+                left: 12px;
+                width: calc(100% - 24px);
+            }
+            .search_icon{
+                position: absolute;
+                top: 50%;
+                left: 15.74px;
+                transform: translateY(-50%);
+                -webkit-transform: translateY(-50%);
+                -moz-transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                -o-transform: translateY(-50%);
+                width: 21.79px;
+                height: 21.79px;
+                object-fit: contain;
+                @media (max-width:1700px){
+                    width: 16.34px;
+                    height: 16.34px;
+                    left: 11.8px;
+                }
+                @media (max-width:770px){
+                    width: 18px;
+                    height: 18px;
+                    left: 13px;
+                }
+            }
+            .search_input{
+                font-size: 15px;
+                line-height: 18.23px;
+                background-color: #F8F9FC;
+                border: 1.21px solid #F4F4F4;
+                padding: 14.53px 20px 13.47px 56.89px;
+                @media (max-width:1700px){
+                    font-size: 11px;
+                    line-height: 14px;
+                    padding: 10.89px 16px 9.61px 42.67px;
+                    border: 0.91px solid #F4F4F4;
+                }
+                @media (max-width:770px){
+                    font-size: 12px;
+                    line-height: 15px;
+                    padding: 12px 13px 11px 47px;
+                    border: 1px solid #F4F4F4;
+                }
+            }
+        }
+        .notification_profile{
+            display: flex;
+            align-items: center;
+            gap: 21.79px;
+            @media (max-width:1700px){
+                gap: 16.34px;
+            }
+            @media (max-width:770px){
+                gap: 8px;
+            }
+            .notification_otr{
+                display: flex;
+                align-items: flex-end;
+                flex-direction: column;
+                cursor: pointer;
+                gap: 2px;
+                @media (max-width:770px){
+                    gap: 0;
+                }
+                .circle{
+                    width: 9.68px;
+                    height: 9.68px;
+                    background-color:#FF6D1C;
+                    border-radius: 100%;
+                    -webkit-border-radius: 100%;
+                    -moz-border-radius: 100%;
+                    -ms-border-radius: 100%;
+                    -o-border-radius: 100%;
+                    @media (max-width:1700px){
+                        width: 7.26px;
+                        height: 7.26px;
+                    }
+                    @media (max-width:770px){
+                        width: 6px;
+                        height: 6px;
+                    }
+                }
+                .bell_icon{
+                    width: 26.63px;
+                    height: 26.63px;
+                    object-fit: contain;
+                    margin-right: 4.84px;
+                    @media (max-width:1700px){
+                        width: 19.97px;
+                        height: 19.97px;
+                        margin-right: 3.63px;
+                    }
+                    @media (max-width:770px){
+                        width: 15px;
+                        height: 15px;
+                    }
+                }
+            }
+            .profile_otr{
+                display: flex;
+                align-items: center;
+                gap: 10.89px;
+                cursor: pointer;
+                @media (max-width:1700px){
+                    gap: 18.17px;
+                }
+                @media (max-width:770px){
+                    gap: 6px;
+                }
+                .profile_img{
+                    width: 36.32px;
+                    height: 36.32px;
+                    object-fit: cover;
+                    border-radius: 100%;
+                    -webkit-border-radius: 100%;
+                    -moz-border-radius: 100%;
+                    -ms-border-radius: 100%;
+                    -o-border-radius: 100%;
+                    @media (max-width:1700px){
+                        width: 27.24px;
+                        height: 27.24px;
+                    }
+                    @media (max-width:770px){
+                        width: 25px;
+                        height: 25px;
+                    }
+                }
+                .text_arrow{
+                    display: flex;
+                    align-items: center;
+                    gap: 3.58px;
+                    @media (max-width:1700px){
+                        gap: 2.93px;
+                    }
+                    @media (max-width:770px){
+                        gap: 4px;
+                    }
+                }
+                .profile_text{
+                    font-size: 15px;
+                    line-height: 18px;
+                    font-family: $font-family-Bold;
+                    color: $Text-color;
+                    @media (max-width:1700px){
+                        font-size: 11px;
+                        line-height: 14px;
+                    }
+                    @media (max-width:770px){
+                        font-size: 10px;
+                        line-height: 12px;
+                    }
+                }
+                .arrow_down{
+                    width: 12.59px;
+                    height: 12.59px;
+                    object-fit: contain;
+                    object-position: center;
+                    @media (max-width:1700px){
+                        width: 10px;
+                        height: 10px;
+                    }
+                }
+            }
+        }
+    }
+}

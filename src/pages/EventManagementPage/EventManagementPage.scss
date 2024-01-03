@@ -1,0 +1,272 @@
+@import "../../components/common-style/variable.scss";
+
+.EventManagementPage_main {
+  height: calc(100vh - 90px);
+  overflow-y: auto;
+  @media (max-width: 1700px) {
+    height: calc(100vh - 66px);
+  }
+  @media (max-width: 770px) {
+    height: calc(100vh - 110px);
+  }
+  &::-webkit-scrollbar {
+    width: 12px;
+    @media (max-width: 770px) {
+      width: 7px;
+    }
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $Primary;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    @media (max-width: 770px) {
+      border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -o-border-radius: 5px;
+    }
+  }
+  .heading_create {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f8f9fc;
+    padding: 26px 13.93px 31.86px 30px;
+    @media (max-width: 1700px) {
+      padding: 19.5px 9.45px 23.4px 22.5px;
+    }
+    @media (max-width: 770px) {
+      padding: 20px 9.39px 19.92px 12px;
+      align-items: flex-end;
+    }
+    .heading_otr {
+      display: flex;
+      align-items: center;
+      gap: 96.54px;
+      @media (max-width: 1700px) {
+        gap: 72.41px;
+      }
+      @media (max-width: 770px) {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .page_heading {
+        font-size: 25px;
+        line-height: 30px;
+        font-family: $font-family-Bold;
+        color: $Black;
+        @media (max-width: 1700px) {
+          font-size: 19px;
+          line-height: 23px;
+        }
+        @media (max-width: 770px) {
+          font-size: 16px;
+          line-height: 19px;
+        }
+      }
+      .tag_button {
+        font-size: 15px;
+        line-height: 18px;
+        padding: 12.07px 14.48px 12.07px 14.48px;
+        border-radius: 6px;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        -ms-border-radius: 6px;
+        -o-border-radius: 6px;
+        @media (max-width: 1700px) {
+          font-size: 11px;
+          line-height: 14px;
+          padding: 9.5px 10.86px;
+          border-radius: 5px;
+          -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+          -ms-border-radius: 5px;
+          -o-border-radius: 5px;
+        }
+        @media (max-width: 770px) {
+          font-size: 9px;
+          line-height: 10px;
+          padding: 6.59px 9.88px;
+          border-radius: 4px;
+          -webkit-border-radius: 4px;
+          -moz-border-radius: 4px;
+          -ms-border-radius: 4px;
+          -o-border-radius: 4px;
+          margin-left: 5px;
+        }
+      }
+    }
+    .theme_btn {
+      font-size: 12px;
+      line-height: 14.58px;
+      font-family: $font-family-Bold;
+      padding: 10px 26px;
+      color: $White;
+      background-color: $Primary;
+      border: none;
+      border-radius: 6px;
+      -webkit-border-radius: 6px;
+      -moz-border-radius: 6px;
+      -ms-border-radius: 6px;
+      -o-border-radius: 6px;
+      transition: 0.3s;
+      -webkit-transition: 0.3s;
+      -moz-transition: 0.3s;
+      -ms-transition: 0.3s;
+      -o-transition: 0.3s;
+      cursor: pointer;
+      @media (max-width: 1700px) {
+        font-size: 11px;
+        line-height: 13px;
+        padding: 5.71px 7.14px 6.29px 7.14px;
+        border-radius: 3.57px;
+        -webkit-border-radius: 3.57px;
+        -moz-border-radius: 3.57px;
+        -ms-border-radius: 3.57px;
+        -o-border-radius: 3.57px;
+      }
+      &:hover {
+        background-color: $Black;
+      }
+    }
+    .create_icons {
+      display: flex;
+      align-items: center;
+      gap: 24.14px;
+      @media (max-width: 1700px) {
+        gap: 18.1px;
+      }
+      @media (max-width: 770px) {
+        gap: 6.59px;
+      }
+      .icon_otr {
+        display: flex;
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        .user_icon {
+          width: 36.2px;
+          height: 36.2px;
+          object-fit: contain;
+          object-position: center;
+          @media (max-width: 1700px) {
+            width: 27.15px;
+            height: 27.15px;
+          }
+          @media (max-width: 770px) {
+            width: 25.08px;
+            height: 25.08px;
+          }
+        }
+      }
+
+      .create_btn {
+        display: flex;
+        align-items: center;
+        padding: 12.7px 9.65px;
+        gap: 9.65px;
+        @media (max-width: 1700px) {
+          padding: 9.5px 7.24px;
+          gap: 7.24px;
+        }
+        @media (max-width: 770px) {
+          padding: 6.59px 5px;
+          gap: 5px;
+        }
+        .plus_icon {
+          width: 16.89px;
+          height: 16.89px;
+          object-fit: contain;
+          @media (max-width: 1700px) {
+            width: 12.67px;
+            height: 12.67px;
+          }
+          @media (max-width: 770px) {
+            width: 9.08px;
+            height: 9.08px;
+          }
+        }
+        .button_text {
+          font-size: 15px;
+          font-weight: 700;
+          line-height: 18px;
+          @media (max-width: 1700px) {
+            font-size: 11px;
+            line-height: 14px;
+          }
+          @media (max-width: 770px) {
+            font-size: 9px;
+            line-height: 10px;
+          }
+        }
+      }
+      .date_picker_otr {
+        .react-datepicker__input-container {
+          .callender_icon {
+            width: 36.2px;
+            height: 36.2px;
+            object-fit: contain;
+            object-position: center;
+            padding: 0;
+            @media (max-width: 1700px) {
+              width: 27.15px;
+              height: 27.15px;
+            }
+            @media (max-width: 770px) {
+              width: 25.08px;
+              height: 25.08px;
+            }
+          }
+          input {
+            position: relative;
+            z-index: 2;
+            width: 36.2px;
+            height: 36.2px;
+            color: transparent;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            @media (max-width: 1700px) {
+              width: 27.15px;
+              height: 27.15px;
+            }
+            @media (max-width: 770px) {
+              width: 25.08px;
+              height: 25.08px;
+            }
+            &:focus {
+              border: none;
+              outline: none;
+            }
+          }
+          button {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  .post_row_custom {
+    display: flex;
+    align-items: stretch;
+    .post_cards_otr {
+      width: 100%;
+      padding: 20px 10px;
+      @media (max-width: 1700px) {
+        padding: 20px 7.5px;
+      }
+      @media (max-width: 770px) {
+        padding: 20px 34px;
+      }
+      &:not(:last-child) {
+        border-right: 1px solid $Border-color;
+      }
+    }
+  }
+}
