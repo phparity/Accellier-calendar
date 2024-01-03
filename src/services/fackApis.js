@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASEURL = "http://localhost:3001";
+const BASEURL = "https://my-json-server.typicode.com/phparity/api-accellier-calendar/";
 export const getEvent = async () => {
   const res = await axios.get(`${BASEURL}/events`);
 const {data} =  res;
