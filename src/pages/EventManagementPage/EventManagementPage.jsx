@@ -18,8 +18,41 @@ function EventManagementPage() {
 
   const calendarRef = createRef();
 
+  useEffect(() => {
+
+      
+    
+  }, [calendarRef]);
+
   const handleGoToToday = () => {
     const calendarApi = calendarRef.current.getApi();
+    const currentCalendar = calendarRef.current.getApi();
+      const currentDate = new Date();
+
+      // Calculate start and end dates for the visible range
+      const pastDate = new Date();
+
+      console.log("🚀 ~ file: EventManagementPage.jsx:29 ~ pastDate:", pastDate);
+
+      pastDate.setDate(currentDate.getDate() - 3);
+
+      const futureDate = new Date();
+
+      console.log("🚀 ~ file: EventManagementPage.jsx:35 ~ futureDate:", futureDate);
+
+      futureDate.setDate(currentDate.getDate() + 3);
+
+      // Set valid range to include the past and future dates
+      currentCalendar.setOption('validRange', {
+        start: pastDate,
+        end: futureDate,
+      });
+
+      // Set visible range to center on today
+      currentCalendar.setOption('visibleRange', {
+        start: pastDate,
+        end: futureDate,
+      });
     calendarApi.today();
   };
   const handleGoToSelectedDate = (date) => {

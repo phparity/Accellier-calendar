@@ -13,6 +13,7 @@ import { getEvent } from "../../services/fackApis";
 import { Spinner } from "flowbite-react";
 
 const Calender = ({ calendarRef, daysPerPage }) => {
+
   const handleEventClick = (clickInfo) => {
     if (
       window.confirm(
@@ -129,17 +130,20 @@ const Calender = ({ calendarRef, daysPerPage }) => {
               duration: { days: daysPerPage },
             },
           }}
+          
           initialView="dayGridWeek"
           editable={true}
           selectable={true}
           selectMirror={true}
-          dayMaxEvents={true}
+          // dayMaxEvents={true}
           dayHeaders={true}
           events={events}
           eventContent={(event) => <EventComponent event={event} />}
           eventClassNames={"bg-[#F3F4F9]"}
           dayCellClassNames={" bg-[#F3F4F9]"}
           eventClick={handleEventClick}
+ 
+          
           // eventsSet={handleEvents}
           eventDrop={handleEventDrop}
         />
