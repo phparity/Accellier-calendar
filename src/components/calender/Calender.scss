@@ -1,0 +1,16 @@
+@import "../common-style/variable.scss";
+/* Add your other CSS rules as needed */
+
+.calender-app-main {
+  tbody {
+   min-height: 100vh;
+   height: 100vh;
+  }
+}
+.initial-date-event {
+  background: #e8e8ea;
+  /* Add any other custom styles as needed */
+}
+.not-initial-date-event {
+  background: #f3f4f9;
+}

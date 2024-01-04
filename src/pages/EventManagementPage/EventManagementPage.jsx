@@ -9,6 +9,7 @@ import DatePickerComponent from "../../components/DatePicker/DatePicker";
 import DateSlider from "../../components/DateSlider/DateSlider";
 import ChooseProfile from "../../components/models/ChooseProfile";
 import CreateEvent from "../../components/events/CreateEvent";
+import { centerDate } from "../../../utils/helper";
 
 function EventManagementPage() {
   const [numColumns, setNumColumns] = useState(7);
@@ -16,48 +17,20 @@ function EventManagementPage() {
   const [openModal, setOpenModal] = useState(false);
   const [openCreateEventModal, setOpenCreateEventModal] = useState(false);
 
+  const startDate = new Date();
+  centerDate(startDate);
+  // const [initialDate, setInitialDate] = useState(startDate);
+  const initialDate = startDate;
   const calendarRef = createRef();
 
-  useEffect(() => {
-
-      
-    
-  }, [calendarRef]);
-
   const handleGoToToday = () => {
-    const calendarApi = calendarRef.current.getApi();
-    const currentCalendar = calendarRef.current.getApi();
-      const currentDate = new Date();
-
-      // Calculate start and end dates for the visible range
-      const pastDate = new Date();
-
-      console.log("🚀 ~ file: EventManagementPage.jsx:29 ~ pastDate:", pastDate);
-
-      pastDate.setDate(currentDate.getDate() - 3);
-
-      const futureDate = new Date();
-
-      console.log("🚀 ~ file: EventManagementPage.jsx:35 ~ futureDate:", futureDate);
-
-      futureDate.setDate(currentDate.getDate() + 3);
-
-      // Set valid range to include the past and future dates
-      currentCalendar.setOption('validRange', {
-        start: pastDate,
-        end: futureDate,
-      });
-
-      // Set visible range to center on today
-      currentCalendar.setOption('visibleRange', {
-        start: pastDate,
-        end: futureDate,
-      });
-    calendarApi.today();
+    calendarRef.current.getApi().gotoDate(startDate);
   };
   const handleGoToSelectedDate = (date) => {
     const calendarApi = calendarRef.current.getApi();
-    const specificDate = date.toLocaleString().split(",")[0];
+    const startDate = new Date(date);
+    centerDate(startDate);
+    const specificDate = startDate.toLocaleString().split(",")[0];
     const [month, day, year] = specificDate.split("/");
     const targetDate = new Date(year, month - 1, day);
     calendarApi.gotoDate(targetDate);
@@ -78,12 +51,12 @@ function EventManagementPage() {
     const updateColumns = () => {
       const screenWidth = window.innerWidth;
 
-      if (screenWidth >= 1250) {
+      if (screenWidth >= 1500) {
         setNumColumns(7);
-      } else if (screenWidth >= 992) {
+      } else if (screenWidth >= 1190) {
         setNumColumns(5);
       } else if (screenWidth >= 770) {
-        setNumColumns(4);
+        setNumColumns(3);
       } else if (screenWidth >= 500) {
         setNumColumns(2);
       } else {
@@ -141,7 +114,11 @@ function EventManagementPage() {
           currentPage={currentPage}
           daysPerPage={numColumns}
         />
-        <Calender calendarRef={calendarRef} daysPerPage={numColumns} />
+        <Calender
+          calendarRef={calendarRef}
+          daysPerPage={numColumns}
+          initialDate={initialDate}
+        />
       </div>
     </>
   );

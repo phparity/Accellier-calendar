@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
 
+import { useState } from "react";
+import "./Events.scss";
 const EventComponent = ({ event }) => {
   const eventDetails = event.event._def.extendedProps;
-
+  const [isExpanded, setIsExpanded] = useState(eventDetails.day <= 1);
 
   // const eventDetails = {
   //   eventName: event.event._def.title,
@@ -33,20 +35,23 @@ const EventComponent = ({ event }) => {
       numbers: ` ${eventDetails.staffingRedNum}  ${eventDetails.staffingYellowNum}    ${eventDetails.staffingGreenNum}`,
     },
   ];
+
+  const handleClick = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
-    <div className=" bg-white text-black    border-separate  flex flex-col border-t-4 border-[#5669FF]   ">
-      <div className=" border-b-[2px]  py-3 px-2">
-        <div className=" flex justify-between items-start">
-          <h2 className="text-lg font-semibold flex">
-            {event.event._def.title}
-          </h2>
+    <div className="  event-container">
+      <div onClick={handleClick} className=" event-title">
+        <div className=" event-title-main">
+          <h2 className=" title-heading">{event.event._def.title}</h2>
           {!eventDetails.isOneDayEvent && (
             <p className=" bg-[#F6A609B2]/70 py-[3px] px-2 rounded-lg">
               Day {eventDetails.day} / {eventDetails.totalDays}
             </p>
           )}
         </div>
-        <div className="flex items-center ">
+        <div className="flex items-center event-time">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="26"
@@ -71,7 +76,7 @@ const EventComponent = ({ event }) => {
           </svg>
           <p className=" text-black">{eventDetails.TimeText}</p>
         </div>
-        <div className=" flex justify-start items-center">
+        <div className=" flex justify-start items-center event-location ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -94,9 +99,9 @@ const EventComponent = ({ event }) => {
           <p> {eventDetails.LocationText}</p>
         </div>
       </div>
-      {eventDetails.day <= 1 && (
+      {isExpanded && (
         <>
-          <div className=" border-b-[2px] items-center flex gap-2 py-3 px-2">
+          <div className=" event-manager border-b-[2px] items-center flex gap-2 py-3 px-2">
             <div>
               <img
                 src={eventDetails.profileImg}
@@ -104,37 +109,37 @@ const EventComponent = ({ event }) => {
                 className=" w-8 rounded-full"
               />
             </div>
-            <div className=" flex flex-col gap-0">
+            <div className="event-manager-info flex flex-col gap-0">
               <strong className=" font-bold">{eventDetails.userName}</strong>
               <p className=" text-slate-500">{eventDetails.userPost}</p>
             </div>
           </div>
-          <div className=" border-b-[2px] flex justify-around py-3 px-2">
+          <div className=" event-info border-b-[2px] flex justify-around py-3 px-2">
             <img
               src={eventDetails.infoIcon1}
               alt={eventDetails.tooltipText1}
               title={eventDetails.tooltipText1}
-              className="logo w-8 h-8 object-contain"
+              className="event-info-logo logo w-8 h-8 object-contain"
             />
             <img
               src={eventDetails.infoIcon2}
               alt={eventDetails.tooltipText2}
               title={eventDetails.tooltipText2}
-              className="logo w-8 h-8 object-contain"
+              className="event-info-logo logo w-8 h-8 object-contain"
             />
             <img
               src={eventDetails.infoIcon3}
               alt={eventDetails.tooltipText3}
               title={eventDetails.tooltipText3}
-              className="logo w-8 h-8 object-contain"
+              className="event-info-logo logo w-8 h-8 object-contain"
             />
             {/* ))} */}
           </div>
-          <div className=" border-b-[2px] flex flex-col justify-around gap-3 py-3 px-2">
+          <div className=" event-extra-info border-b-[2px] flex flex-col justify-around gap-3 py-3 px-2">
             {otherFields.map((field) => (
               <div
                 key={field.name}
-                className=" flex justify-around items-center  "
+                className="extra-info-name flex justify-around items-center  "
               >
                 <div className=" w-1/5">
                   <p>{field.name}</p>
@@ -257,10 +262,10 @@ const EventComponent = ({ event }) => {
             ))}
           </div>
           {(eventDetails.salesMoney || eventDetails.profitMoney) && (
-            <div className=" border-b-[2px] flex border justify-around gap-3 py-3 px-2">
+            <div className=" event-sales-profite border-b-[2px] flex border justify-around gap-3 py-3 px-2">
               {eventDetails.salesMoney && (
                 <div
-                  className={` pr-3 flex flex-col justify-center items-center  ${
+                  className={` event-sales pr-3 flex flex-col justify-center items-center  ${
                     eventDetails.salesMoney &&
                     eventDetails.profitMoney &&
                     "border-r-2"
@@ -271,7 +276,7 @@ const EventComponent = ({ event }) => {
                 </div>
               )}
               {eventDetails.profitMoney && (
-                <div className=" flex flex-col justify-center items-center  ">
+                <div className=" event-profit flex flex-col justify-center items-center  ">
                   <p> Forecast Profit </p>
                   <strong className=" "> {eventDetails.profitMoney}</strong>
                 </div>

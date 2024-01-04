@@ -12,17 +12,18 @@ import { useQuery } from "@tanstack/react-query";
 import { getEvent } from "../../services/fackApis";
 import { Spinner } from "flowbite-react";
 
-const Calender = ({ calendarRef, daysPerPage }) => {
+import "./Calender.scss";
 
-  const handleEventClick = (clickInfo) => {
-    if (
-      window.confirm(
-        `Are you sure you want to delete the event '${clickInfo.event.title}'`
-      )
-    ) {
-      clickInfo.event.remove();
-    }
-  };
+const Calender = ({ calendarRef, daysPerPage, initialDate }) => {
+  // const handleEventClick = (clickInfo) => {
+  //   if (
+  //     window.confirm(
+  //       `Are you sure you want to delete the event '${clickInfo.event.title}'`
+  //     )
+  //   ) {
+  //     clickInfo.event.remove();
+  //   }
+  // };
 
   const { data, isLoading, isFetching } = useQuery({
     queryKey: ["getAllEvents"],
@@ -82,7 +83,6 @@ const Calender = ({ calendarRef, daysPerPage }) => {
     // Update the state when data changes
     setEvents(INITIAL_EVENTS);
   }, [data, INITIAL_EVENTS]);
- 
 
   const handleEventDrop = (dropInfo) => {
     const copiedEvent = {
@@ -94,15 +94,39 @@ const Calender = ({ calendarRef, daysPerPage }) => {
 
   if (isLoading || isFetching) {
     return (
-      <div className="flex flex-wrap  bg-black items-center gap-2">
+      <div className="flex flex-wrap justify-center items-center  gap-2">
         <Spinner aria-label="Small spinner example" size="xl" />
+
+        <h1>Loading...</h1>
       </div>
     );
   }
+  const dayRender = ({ el }) => {
+  
+    el.style.background = "#f3f4f9";
+  };
+  const handleEventMount = (info) => {
+    const isInitialDate =
+      info.date.getDate() === new Date().getDate() &&
+      info.date.getMonth() === new Date().getMonth() &&
+      info.date.getFullYear() === new Date().getFullYear();
+
+    if (isInitialDate) {
+      info.el.classList.add("initial-date-event");
+    }
+    if (!isInitialDate) {
+      info.el.classList.add("not-initial-date-event");
+    }
+  };
+
+  const eventRender = ({ el }) => {
+    el.style.border = "none";
+    el.style.margin = "5px 0px 0px 0px";
+  };
 
   return (
     <div className="demo-app -z-10 ">
-      <div className="demo-app-main">
+      <div className="calender-app-main">
         <FullCalendar
           ref={calendarRef}
           plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
@@ -118,7 +142,7 @@ const Calender = ({ calendarRef, daysPerPage }) => {
               </div>
             );
           }}
-          dayHeaderClassNames={"h-20 text-center bg-[#F3F4F9]  "}
+          dayHeaderClassNames={"h-20 text-center"}
           dayHeaderFormat={{
             weekday: "long",
             month: "long",
@@ -130,22 +154,22 @@ const Calender = ({ calendarRef, daysPerPage }) => {
               duration: { days: daysPerPage },
             },
           }}
-          
           initialView="dayGridWeek"
+          initialDate={initialDate}
+          dayHeaderDidMount={handleEventMount}
           editable={true}
           selectable={true}
           selectMirror={true}
-          // dayMaxEvents={true}
           dayHeaders={true}
           events={events}
           eventContent={(event) => <EventComponent event={event} />}
-          eventClassNames={"bg-[#F3F4F9]"}
-          dayCellClassNames={" bg-[#F3F4F9]"}
-          eventClick={handleEventClick}
- 
-          
-          // eventsSet={handleEvents}
+          eventClassNames={"bg-[#F3F4F9] w-full"}
+          dayCellClassNames={"bg-[#F3F4F9]"}
+          slotDuration="12:00:00" // Set the duration of each time slot
+          slotEventOverlap={false}
           eventDrop={handleEventDrop}
+          eventDidMount={eventRender}
+          dayCellDidMount={dayRender}
         />
       </div>
     </div>

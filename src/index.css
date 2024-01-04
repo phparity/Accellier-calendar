@@ -70,7 +70,20 @@ th .fc-col-header-cell .fc-scrollgrid-sync-inner {
 .fc-daygrid-day-frame,
 .fc-scrollgrid-sync-inner,
 .fc-daygrid-day-bg,
-.fc-day, .fc-day-fri, .fc-day-future ,.fc-daygrid-day,.fc-col-header  {
+.fc-day,
+.fc-day-fri,
+.fc-day-future,
+.fc-daygrid-day,
+.fc-col-header {
   position: relative;
   /* z-index: -100; */
+}
+
+.fc-direction-ltr,
+.fc-daygrid-event,
+.fc-event-start {
+  margin-left: 0;
+}
+.fc-daygrid-dot-event {
+  justify-content: center;
 }

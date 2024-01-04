@@ -2,9 +2,17 @@
 import { useState } from "react";
 import { Button, Modal } from "flowbite-react";
 import "./CreateEvent.scss";
+import { useQuery } from "@tanstack/react-query";
+import { getManagers } from "../../services/fackApis";
+
 const CreateEvent = ({ openCreateEventModal, setOpenCreateEventModal }) => {
   const [selectedSection, setSelectedSection] = useState("eventInfo");
 
+  const { data, isLoading, isFetching } = useQuery({
+    queryKey: ["getAllManagers"],
+    queryFn: getManagers,
+  });
+  console.log(data);
   //   const handleSectionChange = (event) => {
   //     setSelectedSection(event.target.value);
   //   };
@@ -15,7 +23,7 @@ const CreateEvent = ({ openCreateEventModal, setOpenCreateEventModal }) => {
       onClose={() => setOpenCreateEventModal(false)}
     >
       <Modal.Body>
-        <div className="space-y-6 z-50 fixed top-0 right-0 overflow-scroll  ">
+        <div className="space-y-6 z-50 verflow-scroll  ">
           <div className="event-form-container ">
             <div className="event-form-header  ">
               <h1>Create Event</h1>
@@ -37,102 +45,142 @@ const CreateEvent = ({ openCreateEventModal, setOpenCreateEventModal }) => {
               </button>
             </div>
             <form className="event-form">
-              <label htmlFor="sectionDropdown">Select Section:</label>
               <div className="dropdown-buttons">
-                <div onClick={() => setSelectedSection("eventInfo")}>
-                  Event Information
-                </div>
-                <div onClick={() => setSelectedSection("dateTime")}>
-                  Event Date and Time
-                </div>
-                <div onClick={() => setSelectedSection("financialInfo")}>
-                  Financial Information
-                </div>
-              </div>
-
-              {selectedSection === "eventInfo" && (
-                <>
-                  <h2>Event Information</h2>
+                <div className="event-information">
+                  <div className="info-header">
+                    <h1>Event Information</h1>
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="21"
+                        height="20"
+                        viewBox="0 0 21 20"
+                        fill="none"
+                      >
+                        <path
+                          d="M15.4951 12.4973L10.4951 7.49731L5.49512 12.4973"
+                          stroke="black"
+                          strokeWidth="1.87496"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  </div>
                   <div className="eventInfo">
-                    <div className="form-field">
-                      <label htmlFor="eventNature">Event Nature:</label>
-                      <input type="text" id="eventNature" name="eventNature" />
+                    <div className="form-fields">
+                      <div className="form-field">
+                        <label htmlFor="eventNature">Event Nature:</label>
+                        <input
+                          type="text"
+                          id="eventNature"
+                          name="eventNature"
+                        />
+                      </div>
+
+                      <div className="form-field">
+                        <label htmlFor="eventId">Event ID:</label>
+                        <input type="text" id="eventId" name="eventId" />
+                      </div>
                     </div>
 
-                    <div className="form-field">
-                      <label htmlFor="eventId">Event ID:</label>
-                      <input type="text" id="eventId" name="eventId" />
+                    <div className="form-fields">
+                      <div className="form-field">
+                        <label htmlFor="eventName">Event Name:</label>
+                        <input type="text" id="eventName" name="eventName" />
+                      </div>
                     </div>
 
-                    <div className="form-field">
-                      <label htmlFor="eventName">Event Name:</label>
-                      <input type="text" id="eventName" name="eventName" />
+                    <div className="form-fields">
+                      <div className="form-field">
+                        <label htmlFor="eventType">Event Type:</label>
+                        <select id="eventType" name="eventType">
+                          <option value="conference">Conference</option>
+                          <option value="seminar">Seminar</option>
+                          <option value="workshop">Workshop</option>
+                          {/* Add more options as needed */}
+                        </select>
+                      </div>
+
+                      <div className="form-field">
+                        <label htmlFor="eventStatus">Event Status:</label>
+                        <select id="eventStatus" name="eventStatus">
+                          <option value="scheduled">Scheduled</option>
+                          <option value="canceled">Canceled</option>
+                          {/* Add more options as needed */}
+                        </select>
+                      </div>
                     </div>
 
-                    <div className="form-field">
-                      <label htmlFor="eventType">Event Type:</label>
-                      <select id="eventType" name="eventType">
-                        <option value="conference">Conference</option>
-                        <option value="seminar">Seminar</option>
-                        <option value="workshop">Workshop</option>
-                        {/* Add more options as needed */}
-                      </select>
+                    <div className="form-fields">
+                      <div className="form-field">
+                        <label htmlFor="account">Account:</label>
+                        <input type="text" id="account" name="account" />
+                      </div>
+
+                      <div className="form-field">
+                        <label htmlFor="grossSalesAmount">
+                          Gross Sales Amount:
+                        </label>
+                        <input
+                          type="text"
+                          id="grossSalesAmount"
+                          name="grossSalesAmount"
+                        />
+                      </div>
                     </div>
 
-                    <div className="form-field">
-                      <label htmlFor="eventStatus">Event Status:</label>
-                      <select id="eventStatus" name="eventStatus">
-                        <option value="scheduled">Scheduled</option>
-                        <option value="canceled">Canceled</option>
-                        {/* Add more options as needed */}
-                      </select>
+                    <div className="form-fields">
+                      <div className="form-field">
+                        <label htmlFor="numBars">Number of Bars:</label>
+                        <input type="number" id="numBars" name="numBars" />
+                      </div>
+
+                      <div className="form-field">
+                        <label htmlFor="numGuests">Number of Guests:</label>
+                        <input type="number" id="numGuests" name="numGuests" />
+                      </div>
                     </div>
 
-                    <div className="form-field">
-                      <label htmlFor="account">Account:</label>
-                      <input type="text" id="account" name="account" />
+                    <div className="form-fields">
+                      <div className="form-field">
+                        <label htmlFor="relatedCPQ">Related CPQ:</label>
+                        <input type="text" id="relatedCPQ" name="relatedCPQ" />
+                      </div>
+
+                      <div className="form-field">
+                        <label htmlFor="taskType">Task Type:</label>
+                        <input type="text" id="taskType" name="taskType" />
+                      </div>
                     </div>
 
-                    <div className="form-field">
-                      <label htmlFor="grossSalesAmount">
-                        Gross Sales Amount:
-                      </label>
-                      <input
-                        type="text"
-                        id="grossSalesAmount"
-                        name="grossSalesAmount"
-                      />
+                    <div className="form-fields">
+                      <div className="form-field">
+                        <label htmlFor="informationManager">
+                          Information :
+                        </label>
+                        <textarea
+                          type="text"
+                          id="informationManager"
+                          name="informationManager"
+                        />
+                      </div>
                     </div>
 
-                    <div className="form-field">
-                      <label htmlFor="numBars">Number of Bars:</label>
-                      <input type="number" id="numBars" name="numBars" />
-                    </div>
-
-                    <div className="form-field">
-                      <label htmlFor="numGuests">Number of Guests:</label>
-                      <input type="number" id="numGuests" name="numGuests" />
-                    </div>
-
-                    <div className="form-field">
-                      <label htmlFor="relatedCPQ">Related CPQ:</label>
-                      <input type="text" id="relatedCPQ" name="relatedCPQ" />
-                    </div>
-
-                    <div className="form-field">
-                      <label htmlFor="taskType">Task Type:</label>
-                      <input type="text" id="taskType" name="taskType" />
-                    </div>
-
-                    <div className="form-field">
-                      <label htmlFor="informationManager">
-                        Information Manager:
-                      </label>
-                      <input
-                        type="text"
-                        id="informationManager"
-                        name="informationManager"
-                      />
+                    <div className="form-fields">
+                      
+                        <div className="manager">
+                          <img src="/manager.png" alt="" className=" " />
+                          <select id="eventType" name="eventType">
+                            {data?.map((profile) => (
+                              <option key={profile.id} value={profile.name}>
+                                {profile.name}
+                              </option>
+                            ))}
+                            {/* Add more options as needed */}
+                          </select>
+                        </div>
+                      
                     </div>
 
                     <div className="form-field">
@@ -140,35 +188,46 @@ const CreateEvent = ({ openCreateEventModal, setOpenCreateEventModal }) => {
                       <input type="text" id="location" name="location" />
                     </div>
                   </div>
-                </>
-              )}
+                </div>
 
-              {selectedSection === "dateTime" && (
-                <div>
-                  <h2>Event Date and Time</h2>
-                  <div className="form-field">
-                    <label htmlFor="eventDate">Event Date:</label>
-                    <input type="date" id="eventDate" name="eventDate" />
-                  </div>
+                <div onClick={() => setSelectedSection("dateTime")}>
+                  <div>
+                    <h2>Event Date and Time</h2>
+                    <div className="form-field">
+                      <label htmlFor="eventDate">Event Date:</label>
+                      <input type="date" id="eventDate" name="eventDate" />
+                    </div>
 
-                  <div className="form-field">
-                    <label htmlFor="eventTime">Event Time:</label>
-                    <input type="time" id="eventTime" name="eventTime" />
+                    <div className="form-field">
+                      <label htmlFor="eventTime">Event Time:</label>
+                      <input type="time" id="eventTime" name="eventTime" />
+                    </div>
                   </div>
                 </div>
-              )}
-
-              {selectedSection === "financialInfo" && (
-                <div>
-                  <h2>Financial Information</h2>
-                  <div className="form-field">
-                    <label htmlFor="financialDetails">Financial Details:</label>
-                    <textarea id="financialDetails" name="financialDetails" />
+                <div onClick={() => setSelectedSection("financialInfo")}>
+                  <div>
+                    <h2>Financial Information</h2>
+                    <div className="form-field">
+                      <label htmlFor="financialDetails">
+                        Financial Details:
+                      </label>
+                      <textarea id="financialDetails" name="financialDetails" />
+                    </div>
                   </div>
-
-                  {/* Add more financial fields as needed */}
                 </div>
-              )}
+              </div>
+
+              {/* {selectedSection === "eventInfo" && (
+         
+              )} */}
+
+              {/* {selectedSection === "dateTime" && (
+                
+              )} */}
+
+              {/* {selectedSection === "financialInfo" && (
+                
+              )} */}
 
               <Button onClick={() => setOpenCreateEventModal(false)}>
                 I accept

@@ -4,14 +4,14 @@
 // EventForm.scss
 
 .event-form-container {
-  max-width: 600px;
-  margin: 0 auto;
+  // max-width: 600px;
+
   border: 1px solid #ccc;
   border-radius: 8px;
   background: #f8f9fc;
   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.12),
     0px 7px 14px 0px rgba(0, 0, 0, 0.08);
-  display: flex;
+  // display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -38,7 +38,8 @@
     display: flex;
     padding: 10px 0px 20px 0px;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
     gap: 10px;
     .eventInfo {
       display: grid;
@@ -48,21 +49,138 @@
   }
 
   .dropdown-buttons {
-    display: flex;
     margin-bottom: 5px;
-
+    width: 100%;
+    .event-information {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      align-self: stretch;
+      .info-header {
+        display: flex;
+        padding: 10px 20px 10px 10px;
+        align-items: flex-start;
+        gap: 10px;
+        align-self: stretch;
+        border-bottom: 1.5px solid #f5f5f5;
+        h1 {
+          flex: 1 0 0;
+          color: #30313d;
+          font-family: $font-family-Normal;
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 19.784px; /* 98.919% */
+        }
+      }
+      .eventInfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        .form-fields {
+          display: flex;
+          width: 568px;
+          align-items: center;
+          justify-content: space-between;
+          gap: 8px;
+          .form-field {
+            display: flex;
+            padding: 0px 10px;
+            flex-direction: column;
+            align-items: flex-start;
+            flex: 1 0 0;
+            gap: 5px;
+            input {
+              display: flex;
+              justify-content: space-between;
+              align-items: flex-start;
+              flex: 1 0 0;
+            }
+          }
+          .manager {
+            // flex: 1 0 0;
+            // padding: 8px;
+            // border: 1px solid #ccc;
+            // border-radius: 4px;
+            // display: flex;
+            box-sizing: border-box;
+            // margin-bottom: 10px;
+            display: flex;
+            padding: 0px 10px;
+            flex: 1 0 0;
+            gap: 5px;
+            select {
+              display: flex;
+              padding: 0px 10px;
+              justify-content: space-between;
+              align-items: flex-start;
+              flex: 1 0 0;
+            }
+          }
+          img {
+            width: 25px;
+            height: 25px;
+            flex-shrink: 0;
+            border-radius: 41.667px;
+          }
+        }
+        .form-fields {
+          display: flex;
+          width: 568px;
+          align-items: center;
+          justify-content: space-between;
+          gap: 8px;
+          .form-field {
+            display: flex;
+            padding: 0px 10px;
+            flex-direction: column;
+            align-items: flex-start;
+            flex: 1 0 0;
+            gap: 5px;
+            input {
+              display: flex;
+              justify-content: space-between;
+              align-items: flex-start;
+              flex: 1 0 0;
+            }
+          }
+          .manager {
+            // flex: 1 0 0;
+            // padding: 8px;
+            // border: 1px solid #ccc;
+            // border-radius: 4px;
+            // display: flex;
+            box-sizing: border-box;
+            // margin-bottom: 10px;
+            display: flex;
+            padding: 0px 10px;
+            flex: 1 0 0;
+            gap: 5px;
+            select {
+              display: flex;
+              padding: 0px 10px;
+              justify-content: space-between;
+              align-items: flex-start;
+              flex: 1 0 0;
+            }
+          }
+          img {
+            width: 25px;
+            height: 25px;
+            flex-shrink: 0;
+            border-radius: 41.667px;
+          }
+        }
+      }
+    }
     div {
       cursor: pointer;
       padding: 1px;
-      margin-right: 10px;
-      background-color: #4caf50;
-      color: white;
+      color: rgb(0, 0, 0);
       border: none;
       border-radius: 4px;
-
-      &:hover {
-        background-color: #45a049;
-      }
     }
   }
 
@@ -73,22 +191,9 @@
   .form-field {
     margin-bottom: 1px;
 
-    &.two-fields-in-row {
-      display: flex;
-
-      div {
-        flex: 1;
-        margin-right: 10px;
-
-        &:last-child {
-          margin-right: 0;
-        }
-      }
-    }
 
     label {
       display: block;
-      margin-bottom: 5px;
       font-weight: bold;
     }
 
@@ -100,7 +205,6 @@
       border: 1px solid #ccc;
       border-radius: 4px;
       box-sizing: border-box;
-      margin-top: 5px;
       margin-bottom: 10px;
     }
   }
