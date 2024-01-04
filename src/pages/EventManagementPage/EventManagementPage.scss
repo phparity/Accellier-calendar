@@ -58,7 +58,8 @@
       .page_heading {
         font-size: 25px;
         line-height: 30px;
-        font-family: $font-family-Bold;
+        font-family: Verdana, Helvetica, sans-serif;
+
         color: $Black;
         @media (max-width: 1700px) {
           font-size: 19px;
@@ -104,7 +105,7 @@
     .theme_btn {
       font-size: 12px;
       line-height: 14.58px;
-      font-family: $font-family-Bold;
+      font-family: Verdana, Helvetica, sans-serif;
       padding: 10px 26px;
       color: $White;
       background-color: $Primary;
