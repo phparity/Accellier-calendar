@@ -1,0 +1,134 @@
+/* body{
+  overflow: scroll;
+}  */
+.reportMain.main{
+    /* max-width: 1200px; */
+    margin: 0 auto;
+    margin-top: 51px;
+    /* min-height: 68vh; */
+    background-color: transparent;
+  }
+  
+  .reportMain h1 {
+      font-size: 24px;
+      font-weight: 400;
+      text-align: center;
+  }
+  
+  .reportMain  img {
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+  }
+  
+  .reportMain .btn {
+    color: #ffffff;
+    padding: 0.8rem;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-weight: 400;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+  }
+  
+  .reportMain .btn:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+  
+  .reportMain  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 1rem 0;
+    justify-content: center;
+    background-color: #fff;
+    min-height: 68vh;
+  }
+  
+  .reportMain  .cards_item {
+    /* display: flex; */
+    padding: 1rem;
+  }
+  .reportMain  .card h4{
+    padding-top: 1rem;
+  }
+  .detail_parent.parent_padding.subject_padding{
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+  
+  @media (min-width: 40rem) {
+    .reportMain  .cards_item {
+      width: 50%;
+    }
+  }
+  
+  @media (min-width: 56rem) {
+    .reportMain  .cards_item {
+      width: 33.3333%;
+    }
+  }
+  
+  .reportMain .card {
+    background-color: white;
+    border-radius: 0.25rem;
+    box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .reportMain  .card_content {
+    min-height: 256px;
+    padding: 1rem;
+    /* padding-top: 3rem; */
+    background: linear-gradient(to bottom left, #ccc 40%, #ccc 100%);
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .reportMain .card_content a{
+    border: 1px solid #ffffff !important;
+    background: none;
+    color: #868686 !important;
+    background-color: #fff !important;
+    margin-right: 1rem !important;
+    /* padding: 8px 14px; */
+    border-radius: 4px;
+    transition: all ease 0.6s;
+    -moz-transition: all ease 0.6s;
+    -webkit-transition: all ease 0.6s;
+  }
+  .reportMain .card_content a span{
+    display: block;
+    padding: 8px 14px;
+  }
+
+  .reportMain .card_content a:hover, .reportMain .card_content a:focus{
+    color: #fff !important;
+    background-color: transparent !important;
+  }
+  .reportMain  .card_title {
+    text-align: center;
+    color: #ffffff;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    margin: 0px;
+  }
+  .reportMain  .card_text {
+    color: #ffffff;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;    
+    font-weight: 400;
+  }

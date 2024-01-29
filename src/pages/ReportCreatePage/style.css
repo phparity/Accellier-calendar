@@ -1,0 +1,269 @@
+/* body{
+    overflow: scroll;
+} */
+.reportCreatepage{
+    margin-bottom: 100px;
+}
+.reportCreatepage .parent_padding{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: calc(100vh - 62px);
+}
+.reportCreatepage a, .reportCreatepage a:hover, .reportCreatepage a:focus {
+    text-decoration: none;
+    transition: 0.5s;
+    outline: none;
+}
+
+.reportCreatepage .card-body.text-left{
+    text-align: left;
+    min-Height: 57vh;
+    max-Height: 60vh;
+    overflow-y: scroll;
+}
+.reportCreatepage .text-left{
+    text-align: left;
+}
+.reportCreatepage .card .h5{
+    padding-top: 2rem;
+    text-transform: uppercase;
+    font-size: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 1rem;
+    padding: 12px 0; 
+    text-align: center;
+}
+.reportCreatepage .cancel-btn{
+    width: 80px;
+    height: 35px;
+    border-radius: 5px;
+    line-height: 0px;
+    /* border: 0px; */
+    background-color: #fff;
+    color: #b1b1b1;
+    font-size: 13px;
+    font-weight: bold;
+}
+.reportCreatepage .save-btn{
+    width: 120px;
+    height: 35px;
+    border-radius: 5px;
+    line-height: 0px;
+    border: 0px;
+    background-color: #4e73df;
+    color: #fff;
+    font-size: 12px;
+    font-family: 'VerdanaC',sans-serif !important;
+    font-weight: bold;
+}
+.reportCreatepage .reset-btn{
+    padding-left: 14px;
+    padding-right: 14px;
+    border: 1px solid #4a535f !important;
+    background: none;
+    color: #000 !important;
+    margin-right: 1rem !important;
+    background-color: #fff!important;
+    text-transform: capitalize;
+}
+
+/* ------------ */
+.reportCreatepage .text-primary{
+    color : #5a8dee !important;
+}
+.reportCreatepage .card {
+     /* box-shadow: 0px 5px 10px rgba(90, 116, 148, 0.3); */
+    background-color: #fff;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    color: #475f7b;
+    overflow: hidden;
+    border-color: #f1f1f1;
+}
+.reportCreatepage .rc-accordion-toggle {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    justify-content: space-between;
+    background-color: #ebedf0;
+    transition: 0.3s;
+}
+.reportCreatepage .rc-accordion-toggle.active{
+    background-color: #5a8dee;
+}
+.reportCreatepage .rc-accordion-toggle.active .rc-accordion-icon{
+    transform: rotate(180deg);
+    color: #fff;
+}
+.reportCreatepage .rc-accordion-card{
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.reportCreatepage .rc-accordion-card:last-child{
+    margin-bottom: 0;
+}
+.reportCreatepage .rc-accordion-title{
+    font-weight: 500;
+    font-size: 14px;
+    position: relative;
+    margin-bottom: 0;
+    color: #475F7B;
+    transition: 0.3s;
+}
+.reportCreatepage .rc-accordion-toggle.active .rc-accordion-title{
+    color: #fff;
+}
+.reportCreatepage .rc-accordion-icon{
+    position: relative;
+    top: 2px;
+    color: #475F7B;
+    transition: 0.35s;
+    font-size: 12px;
+}
+.reportCreatepage .rc-accordion-body{
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 15px;
+    text-align: left;
+}
+.reportCreatepage .rc-accordion-body p{
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #727E8C;
+}
+.reportCreatepage .rc-collapse{
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.35s ease;
+}
+.reportCreatepage .rc-collapse.show{
+    height: auto;
+}
+
+.reportCreatepage ul.listingUl {
+    list-style: none;
+    margin:0;
+    padding:0;
+    border: 5px solid #e1e1e1;
+    box-shadow: 1px 3px 8px #888; 
+  }
+  .reportCreatepage .listingUl li {
+    padding: 10px 15px;
+    background:#eee;
+    &:hover {
+      background: darken(#eee, 5%);
+    }
+  }
+  
+  .reportCreatepage .placeholder {
+    background: rgb(255,240,120);
+    &:before {
+      content: "Drop here";
+      color: rgb(225,210,90);
+    }
+  }
+  .reportCreatepage .right_wrap_box{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-around; */
+    align-items: center;
+    padding: 4px 0px;
+}
+.reportCreatepage   .right_wrap_box span{
+    font-weight: 600;
+    /* min-width: 10.5rem; */
+    font-size: 1rem;
+  }
+  .reportMainPage tbody tr, .reportMainPage .dragBrackets{  
+    cursor: move !important;
+  }
+  .reportCreatepage .right_wrap_box > span{
+    /* min-width: 11%; */
+
+    min-width: 150px;
+}
+.reportCreatepage .grid_box{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.reportCreatepage .grid_box label{
+    font-weight: bold;
+    margin-right: 1rem;
+}
+.reportCreatepage .grid_box label{
+    border-color:#4a535f;
+}
+.reportCreatepage .card-body{
+    padding: 0 !important;
+}
+.reportCreatepage .text-left .css-19kzrtu{
+    padding: 10px 0;
+}
+.reportCreatepage .field_value{
+    padding: 2px;
+    margin-left: 2rem;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    line-height: 22px;
+}
+.reportCreatepage .field_value label{
+    font-weight: normal;
+    font-size: 0.9rem;
+}
+.reportCreatepage .select-field i {
+    font-size: 1.5rem;
+}
+.reportCreatepage .select-field .delete_icon.tool:hover:before, .reportCreatepage .select-field .delete_icon.tool:focus:before, .reportCreatepage .select-field .delete_icon.tool:active:before{
+    content:'';
+    border-color:transparent;
+}
+.reportCreatepage .select-field .delete_icon.tool:hover, .reportCreatepage .select-field .delete_icon.tool:focus, .reportCreatepage .select-field .delete_icon.tool:active{
+    color:#f00;
+}
+.reportCreatepage .right_wrapper{
+    min-height: 57vh;
+    max-Height: 60vh;
+    overflow-y: scroll;
+}
+.reportCreatepage .type1 input[type='checkbox'] + fieldset{
+    border: transparent;
+}
+.reportCreatepage table td, .reportCreatepage table th {
+    padding: 12px 4px;
+    position: relative;
+}
+.reportCreatepage table td{
+    line-height: 30px;
+    font-weight: normal;
+    font-size: 0.9rem;
+}
+.reportCreatepage .parent_div input:not([type=range]){
+    margin-top: 6px;
+}
+.reportCreatepage #demo-select-small{
+    padding: 14.5px 14px;
+}
+.reportCreatepage textarea{
+    font-size: inherit !important;
+    padding: 0px !important;
+    margin-top: 0 !important;
+    line-height: inherit !important;
+    min-height: auto;
+    width: 100%;
+}
+.reportCreatepage.reportMainPage .parent_div input[type="checkbox"] {
+    margin-right: 5px;
+    width: 100%;
+    height: 100%;
+}
+/* #outlined-textarea{
+    height: 56px !important;
+} */
