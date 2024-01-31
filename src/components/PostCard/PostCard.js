@@ -6,6 +6,9 @@ import TimeIcon from '../../assets/images/blue-time-icon.svg'
 import RedArrow from '../../assets/images/red-arrow.svg'
 import YellowArrow from '../../assets/images/yellow-arrow.svg'
 import GreenArrow from '../../assets/images/green-arrow.svg'
+import infoFilterIcon from '../../assets/images/filter-icon.svg'
+import informationIcon from '../../assets/images/information.svg' 
+import cashRegister from '../../assets/images/cash-register-icon.svg' 
 
 import './PostCard.scss'
 
@@ -142,7 +145,7 @@ const calculatePercentage = (part, whole, arrowType) => {
                         <p className='icon_text'>
                             {TimeText}
                         </p>
-                    </div>
+                    </div> 
                     <div className='icon_text_otr location_text_otr'>
                         <img className='icon' src={LocationIcon} alt='icon' />
                         <p className='icon_text'>
@@ -170,7 +173,7 @@ const calculatePercentage = (part, whole, arrowType) => {
                                 {tooltipText1}
                             </p>
                         </div>
-                        <img className='icon_img' src={infoIcon1} alt='icon' />
+                        <img className='icon_img' src={infoFilterIcon} alt='icon' />
                     </div>
                     <div className='info_icon_inr'>
                         <div className='icon_tooltip icon_tooltip2'>
@@ -181,11 +184,11 @@ const calculatePercentage = (part, whole, arrowType) => {
                         {percentageText ? (
                             <div className='percentage_text_otr'>
                                 <p className='percentage_text'>
-                                    {percentageText}
+                                    {percentageText.replace("%","")}<small>%</small>
                                 </p>
                             </div>
                         ) : (
-                            <img className='icon_img' src={infoIcon2} alt='icon' />
+                            <img className='icon_img' src={cashRegister} alt='icon' />
                         )}
                     </div>
                     <div className='info_icon_inr'>
@@ -194,15 +197,13 @@ const calculatePercentage = (part, whole, arrowType) => {
                                 {tooltipText3}
                             </p>
                         </div>
-                        <img className='icon_img' src={infoIcon3} alt='icon' />
+                        <img className='icon_img' src={informationIcon} alt='icon' />
                     </div>
                 </div>
                 <div className='task_equipments_otr'>
                     <div className='task_otr content_otr'>
                         <p className='task_text'>
-
                             <Link to={'/eventmanagement'}>Tasks</Link>
-
                         </p>
                         <div className='task_row'>
                             <div className='task_num_inr'>

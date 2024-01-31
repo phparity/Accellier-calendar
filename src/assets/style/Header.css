@@ -17,7 +17,7 @@
   @font-face {
     font-weight: 700;
     font-style:  normal;
-    font-family: 'Circular-Loom';
+    font-family: 'Circular-Loom'; 
   
     src: url('https://cdn.loom.com/assets/fonts/circular/CircularXXWeb-Bold-83b8ceaf77f49c7cffa44107561909e4.woff2') format('woff2');
   }
@@ -61,7 +61,7 @@ h4, .h4{
     padding: 0 20px 130px;
 }
 .header_pos+.parent_padding, .header_pos + .detail_parent {
-    padding-top: 21px;
+    padding-top: 25px;
 }
 .header_pos + .detail_parent {
     overflow-y: scroll;
@@ -733,7 +733,7 @@ font-family: 'VerdanaC',sans-serif !important;
     
 }
 
-@media screen and (min-width: 650px) and (max-width: 880px){
+@media screen and (min-width: 767px) and (max-width: 880px){
     
     .my_nav{
         padding: 0.5rem;
@@ -786,7 +786,13 @@ font-family: 'VerdanaC',sans-serif !important;
     }
     
 }
-@media screen and (min-width: 450px) and (max-width: 650px){    
+@media (max-width: 767px) {
+    .header_pos+.parent_padding, 
+    .header_pos + .detail_parent {
+        padding-top: 66px;
+    }
+}
+@media screen and (min-width: 450px) and (max-width: 767px){    
     .search input {     
         min-width: 176px;
     }

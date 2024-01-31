@@ -138,12 +138,16 @@ const DateSlider = ({ selectedDate, eventListData }) => {
     */
     const updateColumns = () => {
       const screenWidth = window.innerWidth;
-      if (screenWidth >= 1250) {
+      if (screenWidth >= 1800) {
         setDaysPerPage(7); // set 7 days per page for large screens
-      } else if (screenWidth >= 1024) {
+      } else if (screenWidth >= 1700) {
         setDaysPerPage(5); // set 5 days per page for medium screens
-      } else if (screenWidth >= 667) {
+      } else if (screenWidth >= 1340) {
+        setDaysPerPage(4); // set 4 days per page for medium screens 
+      }else if (screenWidth >= 992) {
         setDaysPerPage(3); // set 3 days per page for small screens
+      } else if (screenWidth >= 767) {
+        setDaysPerPage(2); // set 2 days per page for small screens
       } else {
         setDaysPerPage(1); // set 1 day per page for extra small screens
       }

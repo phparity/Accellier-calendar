@@ -20,16 +20,7 @@
     -ms-transition: .3s;
     -o-transition: .3s;
     cursor: pointer;
-    @media (max-width:1700px){
-        font-size: 11px;
-        line-height: 13px;
-        padding: 5.71px 7.14px 6.29px 7.14px;
-        border-radius: 3.57px;
-        -webkit-border-radius: 3.57px;
-        -moz-border-radius: 3.57px;
-        -ms-border-radius: 3.57px;
-        -o-border-radius: 3.57px;
-    }
+    
     &:hover{
         background-color: $Black;
     }

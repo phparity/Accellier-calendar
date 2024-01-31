@@ -165,10 +165,10 @@ const handleShow = () => {
                         <div className='row'>
                             <div className="col-12">
                                 <div className='heading_create'>
-                                    <div className='heading_otr'>
-                                        <h3 className='page_heading'>
+                                <h3 className='page_heading'>
                                             Event Management
                                         </h3>
+                                    <div className='heading_otr'> 
                                         <ThemeButton
                                             buttonClass="tag_button"
                                             buttonText="Today"

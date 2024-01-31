@@ -38,16 +38,16 @@
     }
     .heading_create{
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 26px 13.93px 31.86px 30px;
+        align-items: center; 
+        padding: 26px 0;
         @media (max-width:1700px){
-            padding: 19.5px 9.45px 23.4px 22.5px;
+            padding: 19.5px 0 23.4px 0;
         }
         @media (max-width:770px){
-            padding: 20px 9.39px 19.92px 12px;
+            padding: 20px 0 19.92px 0;
             align-items: flex-end;
-        }
+            flex-wrap: wrap;
+        } 
         .heading_otr{
             display: flex;
             align-items: center;
@@ -59,57 +59,48 @@
                 align-items: flex-start;
                 flex-direction: column;
                 gap: 14px;
-            }
-            .page_heading{
-                font-size: 25px;
-                line-height: 30px;
-                font-family: $font-family-Bold;
-                color: $Black;
-                @media (max-width:1700px){
-                    font-size: 19px;
-                    line-height: 23px;
-                }
-                @media (max-width:770px){
-                    font-size: 16px;
-                    line-height: 19px;
-                }
-            }
+            } 
             .tag_button{
                 font-size: 15px;
                 line-height: 18px;
-                padding: 12.07px 14.48px 12.07px 14.48px;
+                padding: 12px 14px; 
                 border-radius: 6px;
                 -webkit-border-radius: 6px;
                 -moz-border-radius: 6px;
                 -ms-border-radius: 6px;
                 -o-border-radius: 6px;
-                @media (max-width:1700px){
-                    font-size: 11px;
-                    line-height: 14px;
-                    padding: 9.5px 10.86px;
-                    border-radius: 5px;
-                    -webkit-border-radius: 5px;
-                    -moz-border-radius: 5px;
-                    -ms-border-radius: 5px;
-                    -o-border-radius: 5px;
-                }
-                @media (max-width:770px){
-                    font-size: 9px;
-                    line-height: 10px;
-                    padding: 6.59px 9.88px;
-                    border-radius: 4px;
-                    -webkit-border-radius: 4px;
-                    -moz-border-radius: 4px;
-                    -ms-border-radius: 4px;
-                    -o-border-radius: 4px;
-                    margin-left: 5px;
+                font-family: $font-family-Normal;
+                font-weight: 700; 
+                @media (max-width:420px){
+                    font-size: 12px;
+                    padding: 8px 10px;
                 }
             }
         }
+        .page_heading{
+            font-size: 25px;
+            line-height: 30px;
+            font-family: $font-family-Normal;
+            color: $Black;
+            margin: 0 20px 0 0;
+            
+            @media (max-width:1700px){
+                font-size: 19px;
+                line-height: 23px;
+            }
+            @media (max-width:770px){ 
+                font-size: 16px;
+                line-height: 19px;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+
         .create_icons{
             display: flex;
             align-items: center;
             gap: 24.14px;
+            margin-left: auto;
             @media (max-width:1700px){
                 gap: 18.1px;
             }
@@ -142,39 +133,26 @@
                 align-items: center;
                 padding: 12.7px 9.65px;
                 gap: 9.65px;
-                @media (max-width:1700px){
-                    padding: 9.5px 7.24px;
-                    gap: 7.24px;
-                }
-                @media (max-width:770px) {
-                    padding: 6.59px 5px;
-                    gap: 5px;
-                }
+                font-family: $font-family-Normal;
+                font-weight: 700;
+                 
                 .plus_icon{
                     width: 16.89px;
                     height: 16.89px;
                     object-fit: contain;
-                    @media (max-width:1700px){
-                        width: 12.67px;
-                        height: 12.67px;
-                    }
-                    @media (max-width:770px){
-                        width: 9.08px;
-                        height: 9.08px;
-                    }
+                   
                 }
                 .button_text{
                     font-size: 15px;
                     font-weight: 700;
                     line-height: 18px;
-                    @media (max-width:1700px){
-                        font-size: 11px;
-                        line-height: 14px;
+                    @media (max-width:420px){ 
+                        font-size: 12px;
                     }
-                    @media (max-width:770px){
-                        font-size: 9px;
-                        line-height: 10px;
-                    }
+                   
+                }
+                @media (max-width:420px){ 
+                    padding: 8px 10px;
                 }
             }
             .date_picker_otr{
@@ -240,19 +218,14 @@
     .post_row_custom{
         display: flex;
         align-items: stretch;
+
         .post_cards_otr{
             width: 100%;
-            padding: 20px 10px;
-            background-color: #F3F4F9;
-            min-height: 100vh;
-            @media (max-width:1700px){
-                padding: 20px 7.5px;
-            }
-            @media (max-width:770px){
-                padding: 20px 34px;
-            }
+            padding: 15px 10px;
+            background-color: #F8F9FC;
+            min-height: 100vh; 
             &:not(:last-child){
-                border-right: 1px solid $Border-color;
+                border-right: 1px solid $Border-color; 
             }
         }
     }

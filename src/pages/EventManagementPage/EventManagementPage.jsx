@@ -70,11 +70,11 @@ function EventManagementPage() {
     };
   }, []);
   return (
-    <>
+    <> 
       <div className="EventManagementPage_main relative">
         <div className="heading_create">
-          <div className="heading_otr">
-            <h3 className="page_heading">Event Management</h3>
+        <h3 className="page_heading">Event Management</h3>  
+          <div className="heading_otr"> 
             <button
               onClick={handleGoToToday}
               className={`theme_btn tag_button `}
