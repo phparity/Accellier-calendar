@@ -56,7 +56,7 @@
                 background-color: $Secondary;
                 padding:3px 6px;
                 font-weight: 700;
-                border-radius: 4px;
+                border-radius: 4px; 
                 -webkit-border-radius: 4px;
                 -moz-border-radius: 4px;
                 -ms-border-radius: 4px;
@@ -89,10 +89,9 @@
             &+.icon_text_otr {
                 margin-top: 5px;
             }
-        }
-      
-    }
-    .card_body{
+        }  
+    } 
+    .card_body{      
         opacity: 0;
         visibility: hidden;
         background-color: $White;
@@ -106,8 +105,7 @@
             border-bottom: 0.48px solid $Border-color2;
         }
         @media (max-width:770px){
-            height: 0px;
-            overflow: hidden;
+            height: 0px; 
             border-bottom: 0.81px solid $Border-color2;
         }
         &.card_body_visible{
@@ -173,7 +171,7 @@
                 .icon_tooltip{
                     position: absolute;
                     left: 50%;
-                    top: -22px;
+                    top: -24px;
                     transform: translateX(-50%);
                     -webkit-transform: translateX(-50%);
                     -moz-transform: translateX(-50%);
@@ -185,34 +183,20 @@
                     -moz-border-radius: 4px;
                     -ms-border-radius: 4px;
                     -o-border-radius: 4px;
-                    border: 0.5px solid #E6E6E6;
-                    padding: 2.56px 2.86px 3.79px 2.52px;
+                    border: 1px solid #E8E8EA;
+                    padding: 5px 7px;
                     opacity: 0;
                     visibility: hidden;
                     transition: .3s;
                     -webkit-transition: .3s;
                     -moz-transition: .3s;
                     -ms-transition: .3s;
-                    -o-transition: .3s;
-                    @media (max-width:1700px){
-                        top: -18px;
-                        padding: 1.89px 2.38px 2.58px 1.89px;
-                        border-radius: 3px;
-                        -webkit-border-radius: 3px;
-                        -moz-border-radius: 3px;
-                        -ms-border-radius: 3px;
-                        -o-border-radius: 3px;
-                    }
-                    @media (max-width:770px){
-                        top: -22px;
-                        border: 0.5px solid #E6E6E6;
-                        padding: 2.56px 2.86px 3.79px 2.52px;
-                    }
+                    -o-transition: .3s; 
                     &::after {
                         content: '';
                         position: absolute;
                         left: 50%;
-                        bottom: -4px;
+                        bottom: -5px;
                         width: 8px;
                         height: 8px;
                         transform: translateX(-50%) rotate(45deg);
@@ -221,34 +205,27 @@
                         -ms-transform: translateX(-50%) rotate(45deg);
                         -o-transform: translateX(-50%) rotate(45deg);
                         background-color: #FBFBFB;
-                        border-bottom: 0.5px solid #E6E6E6;
-                        border-right: 0.5px solid #E6E6E6;
-                        @media (max-width:1700px){
-                            bottom: -3px;
-                            width: 6px;
-                            height: 6px;
-                        }
+                        border-bottom: 1px solid #E8E8EA;
+                        border-right: 1px solid #E8E8EA; 
                     }
                     .tooltip_text{
                         position: relative;
-                        font-size: 8px;
-                        font-weight: 400;
+                        font-size: 12px;
+                        font-weight: 400; 
                         line-height: 9px;
                         text-wrap: nowrap;
                         color: $Text-color2;
                         z-index: 2;
                         margin-bottom: 0;
-                        @media (max-width:1700px){
-                            font-size: 6px;
-                            line-height: 7px;
-                        }
-                        @media (max-width:770px){
-                            font-size: 8px;
-                            line-height: 9px;
-                        }
                     }
                 }
                 .icon_tooltip3{
+                    border-color: #1CC88A;
+
+                    &::after {
+                        border-bottom-color:  #1CC88A;
+                        border-right-color:#1CC88A; 
+                    }
                     .tooltip_text{
                         color: #1CC88A;
                     }
