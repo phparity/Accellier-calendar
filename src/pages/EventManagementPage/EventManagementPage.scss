@@ -45,12 +45,10 @@
 
     .heading_create {
         display: flex;
-        align-items: center;
-        padding: 26px 0;
-
-        @media (max-width:1700px) {
-            padding: 19.5px 0 23.4px 0;
-        }
+        padding-left: 13px;
+        padding-right: 30px;
+        margin-top: 64px;
+        padding-bottom: 50px;
 
         @media (max-width:770px) {
             padding: 20px 0 19.92px 0;
@@ -74,16 +72,19 @@
             }
 
             .tag_button {
-                font-size: 15px;
-                line-height: 18px;
-                padding: 12px 14px;
-                border-radius: 6px;
-                -webkit-border-radius: 6px;
-                -moz-border-radius: 6px;
-                -ms-border-radius: 6px;
-                -o-border-radius: 6px;
-                font-family: $font-family-Normal;
-                font-weight: 700;
+                height: 35px;
+                background-color: #4e73df !important;
+                font-family: 'VerdanaC', sans-serif !important;
+                font-size: 12px !important;
+                font-weight: bold;
+                color: #ffffff;
+                text-align: center;
+                vertical-align: middle;
+                border-radius: 5px;
+                padding-left: 18px;
+                padding-right: 18px;
+                border: 2px solid #4e73df;
+                line-height: 1;
 
                 @media (max-width:420px) {
                     font-size: 12px;
@@ -93,10 +94,6 @@
         }
 
         .page_heading {
-            font-size: 25px;
-            line-height: 30px;
-            font-family: $font-family-Normal;
-            color: $Black;
             margin: 0 20px 0 0;
 
             @media (max-width:1700px) {
@@ -152,34 +149,25 @@
             }
 
             .create_btn {
-                display: flex;
-                align-items: center;
-                padding: 12.7px 9.65px;
-                gap: 9.65px;
+                background-color: #4E73DF;
+                min-width: 156px;
+                height: 35px;
+                color: #ffffff;
+                font-size: 12px !important;
+                font-weight: bold;
                 font-family: $font-family-Normal;
-                font-weight: 700;
+                border: 0px;
+                border-radius: 5px;
+                line-height: 100%;
+                text-transform: capitalize;
+                padding: 0;
 
                 .plus_icon {
-                    width: 16.89px;
-                    height: 16.89px;
-                    object-fit: contain;
+                    color: #ffffff !important;
+                    font-size: 16px;
+                    margin-right: 5px;
 
-                }
-
-                .button_text {
-                    font-size: 15px;
-                    font-weight: 700;
-                    line-height: 18px;
-
-                    @media (max-width:420px) {
-                        font-size: 12px;
-                    }
-
-                }
-
-                @media (max-width:420px) {
-                    padding: 8px 10px;
-                }
+                }  
             }
 
             .date_picker_otr {
@@ -301,7 +289,7 @@
                             margin-left: auto;
                         }
                     }
- 
+
                 }
             }
         }

@@ -8,7 +8,8 @@ import Calender from "../../components/calender/Calender";
 import DatePickerComponent from "../../components/DatePicker/DatePicker";
 import DateSlider from "../../components/DateSlider/DateSlider";
 import ChooseProfile from "../../components/models/ChooseProfile";
-import CreateEvent from "../../components/events/CreateEvent";
+import CreateEvent from "../../components/events/CreateEvent";  
+import { RiAddCircleLine } from "react-icons/ri";
 import { centerDate } from "../../../utils/helper";
 
 function EventManagementPage() {
@@ -44,19 +45,19 @@ function EventManagementPage() {
   const handleGoToPrevWeek = () => {
     setCurrentPage(currentPage - 1);
     const calendarApi = calendarRef.current.getApi();
-    calendarApi.prev();
+    calendarApi.prev(); 
   };
-
+ 
   useEffect(() => {
     const updateColumns = () => {
       const screenWidth = window.innerWidth;
 
-      if (screenWidth >= 1500) {
+      if (screenWidth >= 1440) { 
         setNumColumns(7);
-      } else if (screenWidth >= 1190) {
-        setNumColumns(5);
+      } else if (screenWidth >= 1360) {
+        setNumColumns(7); 
       } else if (screenWidth >= 770) {
-        setNumColumns(3);
+        setNumColumns(3); 
       } else if (screenWidth >= 500) {
         setNumColumns(2);
       } else {
@@ -95,9 +96,10 @@ function EventManagementPage() {
             />
             <button
               onClick={() => setOpenCreateEventModal(true)}
-              className="theme_btn create_btn"
+              className="create_btn"
             >
-              <img className="plus_icon" src={PlusIcon} alt="icon" />
+              {/* <img className="plus_icon" src={PlusIcon} alt="icon" /> */}
+              <i className="crt_btn_i"><RiAddCircleLine /></i>
               <span className="button_text">Create Event</span>
             </button>
           </div>

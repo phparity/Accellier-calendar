@@ -4,6 +4,7 @@ import DatePickerComponent from '../../components/DatePickerComponent/DatePicker
 import PostCardList from '../../components/PostCard/PostCardList'
 import PostCard from '../../components/PostCard/PostCard'
 import DateSlider from '../../components/DateSlider/DateSlider'
+import { RiAddCircleLine } from "react-icons/ri";
 
 import ProfileIcon from '../../assets/images/profile-icon.svg'
 import PlusIcon from '../../assets/images/plus-icon.svg'
@@ -187,8 +188,9 @@ const handleShow = () => {
                                             }
                                         </Dropdown>
                                         <DatePickerComponent setTodaysDate={setTodaysDate} />
-                                        <button onClick={handleShow} className='theme_btn create_btn'>
-                                            <img className='plus_icon' src={PlusIcon} alt='icon' />
+                                        <button onClick={handleShow} className=' create_btn'>
+                                            {/* <img className='plus_icon' src={PlusIcon} alt='icon' /> */}
+                                            <i className="crt_btn_i"><RiAddCircleLine /></i>
                                             <span className='button_text'>
                                                 Create Event
                                             </span>
