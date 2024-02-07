@@ -133,7 +133,7 @@ const handleShow = () => {
          * Update the number of columns based on the screen width
          */
         const updateColumns = () => {
-            const screenWidth = window.innerWidth;
+          /*   const screenWidth = window.innerWidth;
             if (screenWidth >= 1250) {
                 setNumColumns(7); // Set number of columns to 7 for large screens
             } else if (screenWidth >= 1024) {
@@ -142,7 +142,8 @@ const handleShow = () => {
                 setNumColumns(3); // Set number of columns to 3 for small screens
             } else {
                 setNumColumns(1); // Set number of columns to 1 for extra small screens
-            }
+            } */
+            
         };
         // Call updateColumns function
         updateColumns();

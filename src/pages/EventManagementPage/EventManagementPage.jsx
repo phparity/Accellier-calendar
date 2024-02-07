@@ -52,16 +52,25 @@ function EventManagementPage() {
     const updateColumns = () => {
       const screenWidth = window.innerWidth;
 
-      if (screenWidth >= 1440) { 
-        setNumColumns(7);
-      } else if (screenWidth >= 1360) {
-        setNumColumns(7); 
-      } else if (screenWidth >= 770) {
-        setNumColumns(3); 
-      } else if (screenWidth >= 500) {
-        setNumColumns(2);
+      // if (screenWidth >= 1440) { 
+      //   setNumColumns(7);
+      // } else if (screenWidth >= 1360) {
+      //   setNumColumns(7); 
+      // } else if (screenWidth >= 770) {
+      //   setNumColumns(3); 
+      // } else if (screenWidth >= 500) {
+      //   setNumColumns(2);
+      // } else {
+      //   setNumColumns(1);
+      // }
+      if (screenWidth >= 1250) {
+        setDaysPerPage(7); // set 7 days per page for large screens
+      } else if (screenWidth >= 1024) {
+        setDaysPerPage(5); // set 5 days per page for medium screens
+      } else if (screenWidth >= 667) {
+        setDaysPerPage(3); // set 3 days per page for small screens
       } else {
-        setNumColumns(1);
+        setDaysPerPage(1); // set 1 day per page for extra small screens
       }
     };
     updateColumns();
