@@ -429,7 +429,9 @@ button:focus, button{
   text-align: center;
   line-height: 19px;
   color: #fff;
-  margin-left: -4px;
+  margin-left: -10px;
+  z-index: 5;
+    position: relative;
 }
 
 .user_det{
@@ -459,10 +461,10 @@ font-family: 'VerdanaC',sans-serif !important;
     color: #495057;
     max-width: 157px;
     font-size: 14px;
-    margin-right: 10px;
+    /* margin-right: 10px; */
 }
 .user_email .dropdown{
-    width: 90%;
+    width: 100%;
     position: relative;
 }
 .email{
@@ -744,7 +746,7 @@ font-family: 'VerdanaC',sans-serif !important;
     }
     .bell_icon{
         margin-left: 0px;
-        margin-top: -3px;
+        /* margin-top: -3px; */
     }
     .user_det{
         margin-left: 12px;
@@ -817,7 +819,10 @@ font-family: 'VerdanaC',sans-serif !important;
         display: none;
     }
     .user_email{
-        width: 20px !important;
+        width: 45px !important;
+    }
+    .user_email .dropdown #dropdown-basic {
+        padding: 7px 0 7px 15px !important;
     }
     .user_email .dropdown button::after{
         display: inherit !important;
@@ -835,25 +840,24 @@ font-family: 'VerdanaC',sans-serif !important;
 
 @media screen and (max-width: 450px){
     
-    .bell_icon{
-        margin-top: -3px;
+    /* .bell_icon{ 
         font-size: 22px;
         padding-right: 8px;
     }
     .user_det{
         margin-left: 2px;
-    }
+    } */
     .search{
         width: 100%;
     }
     
     .acc_tab_img_H{
-        margin-top: -15px;
+        /* margin-top: -15px; */
         margin-left: 10px;
         margin-right: 0px;
         padding: 0rem;
-        width: 95px;
-        height: 22px;
+      /*   width: 95px;
+        height: 22px; */
     }
     .nav-menu{
         margin-left: 0px;
@@ -862,12 +866,12 @@ font-family: 'VerdanaC',sans-serif !important;
     .heading_para{
         margin-top: 120px;
     }
-    .user_ini {
+    /* .user_ini {
         width: 30px;
         height: 30px;
         line-height: 30px;
         font-size: 17px;
-    }
+    } */
     .user_email .dropdown button{
         
     }

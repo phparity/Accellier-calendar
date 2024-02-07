@@ -6,7 +6,7 @@
     position: relative;
     // background-color: $Light-Bg2;
     background-color: #F3F4F9;
-    @media (max-width:770px){
+    @media (max-width:660px){
         border-top: 1px solid #C2C2C2;
         border-bottom: 1px solid #C2C2C2;
         .arrows_otr{
@@ -71,13 +71,13 @@
         &.left_arrow {
             left: 20px;
             @media (max-width:1700px){
-                left: 18px;
+                left: 10px;
             }
         }
         &.right_arrow {
             right: 20px;
             @media (max-width:1700px){
-                right: 14.4px;
+                right: 10px;
             }
         }
         &[disabled] {

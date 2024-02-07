@@ -37,10 +37,23 @@
         border-color: #4e73df;
         color: #4e73df;
         margin: 0 2px;
+        border-width: 2px;
+        &:hover {
+            color: #4e73df;
+            background-color: #ffffff;
+            border-color: #4e73df;
+            opacity: 0.8;
+        }
     }
     .save_btn{
         background-color: #4e73df;
         border-color: #4e73df;
-        color: $White;
+        color: $White; 
+        &:hover {
+            background-color: #4e73df;
+            border-color: #4e73df;
+            color: $White; 
+            opacity: 0.8;
+        }
     }
 }

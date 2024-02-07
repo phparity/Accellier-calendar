@@ -1645,15 +1645,15 @@ only screen and (max-width: 767px),
         max-width: 180px;
     }
 	.menu_bar_icon{
-        margin-left: 0;
+        margin-left: 10px;
     }
     .user_email{
         margin-right: 0;
     }
-    .form-inline{
+    /* .form-inline{
         margin-left: 0;
         margin-right: 0;
-    }
+    } */
 }
 
 @media screen and (max-width: 424px){

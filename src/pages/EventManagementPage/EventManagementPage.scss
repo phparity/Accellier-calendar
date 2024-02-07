@@ -45,13 +45,14 @@
 
     .heading_create {
         display: flex;
-        padding-left: 13px;
-        padding-right: 30px;
+        padding-left: 15px;
+        padding-right: 15px;
         margin-top: 64px;
         padding-bottom: 50px;
 
-        @media (max-width:770px) {
-            padding: 20px 0 19.92px 0;
+        @media (max-width:700px) {
+            padding-top: 20px;
+            padding-bottom: 30px;
             align-items: flex-end;
             flex-wrap: wrap;
         }
@@ -101,11 +102,11 @@
                 line-height: 23px;
             }
 
-            @media (max-width:770px) {
+            @media (max-width:700px) {
                 font-size: 16px;
                 line-height: 19px;
                 width: 100%;
-                margin-bottom: 20px;
+                margin-bottom: 36px;
             }
         }
 
@@ -236,7 +237,7 @@
             .filterMenu_wrap {
                 min-height: 100px;
                 max-height: 290px;
-                padding-right: 10px;
+                padding-right: 0;
                 overflow: hidden;
                 overflow-y: auto;
 

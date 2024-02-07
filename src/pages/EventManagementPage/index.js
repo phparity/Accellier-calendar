@@ -180,7 +180,8 @@ const handleShow = () => {
                                         />
                                     </div>
                                     <div className='create_icons'>
-                                        <Dropdown show={isFilterOpen} onToggle={handleFilterDropdownToggle} className="btn_actions" autoClose="outside">
+                                        <Dropdown show={isFilterOpen} onToggle={handleFilterDropdownToggle} 
+                                        className="btn_actions" autoClose="outside" drop={'down-centered'}>
                                             <Dropdown.Toggle className="btn-more icon_otr" id="dropdown-autoclose-outside">
                                                 <img className='user_icon' src={ProfileIcon} alt='icon' />
                                             </Dropdown.Toggle>
