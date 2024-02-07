@@ -47,6 +47,10 @@
             a{
                 color: $Black;
             } 
+            @media (max-width:666px){
+                min-height: auto;
+            }
+
         }
         .day_tag_otr{
             .day_tag_text{
