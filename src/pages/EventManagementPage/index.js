@@ -51,14 +51,18 @@ const handleShow = () => {
         let eventFilterData = [];
 
         // Use filter and map to create a new array with the filtered data
-        PostCardList?.filter((item, index, self) => {
-            return index === self.findIndex((t) => t.userName === item.userName);
-        }).map((data) => {
-                // Create a new object with selected fields and add it to eventFilterData
-                let newData = { 'id': data?.id, 'userName': data?.userName, 'userPost': data?.userPost, 'profileImg': data?.profileImg, 'isFilter': false };
-                eventFilterData.push(newData);
-            })
-
+        // PostCardList?.filter((item, index, self) => {
+        //     return index === self.findIndex((t) => t.userName === item.userName);
+        // }).map((data) => {
+        //         // Create a new object with selected fields and add it to eventFilterData
+        //         let newData = { 'id': data?.id, 'userName': data?.userName, 'userPost': data?.userPost, 'profileImg': data?.profileImg, 'isFilter': false };
+        //         eventFilterData.push(newData);
+        //     })
+        PostCardList?.map((data) => {
+                    // Create a new object with selected fields and add it to eventFilterData
+                    let newData = { 'id': data?.id, 'userName': data?.userName, 'userPost': data?.userPost, 'profileImg': data?.profileImg, 'isFilter': false };
+                    eventFilterData.push(newData);
+                })
         // Set the filtered data as the new filter value
         setFilterValue(eventFilterData);
     }
@@ -181,7 +185,7 @@ const handleShow = () => {
                                     </div>
                                     <div className='create_icons'>
                                         <Dropdown show={isFilterOpen} onToggle={handleFilterDropdownToggle} 
-                                        className="btn_actions" autoClose="outside" drop={'down-centered'}>
+                                        className="btn_actions" autoClose="outside" drop={'end'}>
                                             <Dropdown.Toggle className="btn-more icon_otr" id="dropdown-autoclose-outside">
                                                 <img className='user_icon' src={ProfileIcon} alt='icon' />
                                             </Dropdown.Toggle>

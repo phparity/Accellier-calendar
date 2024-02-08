@@ -61,7 +61,7 @@ h4, .h4{
     padding: 0 20px 130px;
 }
 .header_pos+.parent_padding, .header_pos + .detail_parent {
-    padding-top: 25px;
+    padding-top: 22px;
 }
 .header_pos + .detail_parent {
     overflow-y: scroll;

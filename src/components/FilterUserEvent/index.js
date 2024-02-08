@@ -10,7 +10,7 @@ import { Trans } from 'react-i18next';
  *
  * @param {object} props - The props object containing handleFilterCloseButton, filterValue, handleFilterSelection, and handleEventFilteredData
  * @return {JSX.Element} The filtered and rendered user events
- */
+ */ 
 const FilterUserEvent = (props) => {
     // Destructuring props to extract specific values
     const { handleFilterCloseButton, filterValue, handleFilterSelection, handleEventFilteredData } = props;
