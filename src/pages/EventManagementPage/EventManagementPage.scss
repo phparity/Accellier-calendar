@@ -230,8 +230,12 @@
                 min-width: 300px;
                 border: 0;
                 border-radius: 8px;
-                transform: none !important;
-                top: 38px !important;
+              
+
+                @media (min-width:568px){ 
+                    transform: none !important;
+                    top: 38px !important;
+                }
             }
 
             .filterMenu_wrap {

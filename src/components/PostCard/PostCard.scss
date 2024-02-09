@@ -113,14 +113,14 @@
         @media (max-width:1700px){
             border-bottom: 0.48px solid $Border-color2;
         }
-        @media (max-width:770px){
+        @media (max-width:666px){
             height: 0px; 
             border-bottom: 0.81px solid $Border-color2;
         }
         &.card_body_visible{
             opacity: 1;
             visibility: visible;
-            @media (max-width:770px){
+            @media (max-width:666px){
                 height: auto;
             }
         }   

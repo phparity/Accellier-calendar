@@ -15,6 +15,7 @@ import Footer from '../../layouts/Footer'
 import { Dropdown } from 'react-bootstrap'
 import CreateEventSlider from '../../components/CreateEventSlider'
 import FilterUserEvent from '../../components/FilterUserEvent'
+import useWindowDimensions from '../../service/useWindowDimensions'
 
 /**
  * Creates an Event Management Module component with state variables and functions for managing events.
@@ -26,22 +27,22 @@ function EventManagementModule() {
     const [isFilterOpen, setIsFilterOpen] = useState(false);
     const [eventListData, setEventListData] = useState(PostCardList);
     const [filterValue, setFilterValue] = useState([]);
-
-/**
- * Function to handle the closing action
- * 
- * @returns {void}
- */
-const handleClose = () => {
-  setShow(false);
-};
-/**
- * Function to handle showing
- */
-const handleShow = () => {
-  // Set show to true
-  setShow(true);
-};
+    const { height, width } = useWindowDimensions();
+    /**
+     * Function to handle the closing action
+     * 
+     * @returns {void}
+     */
+    const handleClose = () => {
+        setShow(false);
+    };
+    /**
+     * Function to handle showing
+     */
+    const handleShow = () => {
+        // Set show to true
+        setShow(true);
+    };
 
     /**
      * Saves the filtered values from the PostCardList
@@ -59,10 +60,10 @@ const handleShow = () => {
         //         eventFilterData.push(newData);
         //     })
         PostCardList?.map((data) => {
-                    // Create a new object with selected fields and add it to eventFilterData
-                    let newData = { 'id': data?.id, 'userName': data?.userName, 'userPost': data?.userPost, 'profileImg': data?.profileImg, 'isFilter': false };
-                    eventFilterData.push(newData);
-                })
+            // Create a new object with selected fields and add it to eventFilterData
+            let newData = { 'id': data?.id, 'userName': data?.userName, 'userPost': data?.userPost, 'profileImg': data?.profileImg, 'isFilter': false };
+            eventFilterData.push(newData);
+        })
         // Set the filtered data as the new filter value
         setFilterValue(eventFilterData);
     }
@@ -137,24 +138,24 @@ const handleShow = () => {
          * Update the number of columns based on the screen width
          */
         const updateColumns = () => {
-          /*   const screenWidth = window.innerWidth;
-            if (screenWidth >= 1250) {
-                setNumColumns(7); // Set number of columns to 7 for large screens
-            } else if (screenWidth >= 1024) {
-                setNumColumns(5); // Set number of columns to 5 for medium screens
-            } else if (screenWidth >= 667) {
-                setNumColumns(3); // Set number of columns to 3 for small screens
-            } else {
-                setNumColumns(1); // Set number of columns to 1 for extra small screens
-            } */
-            
+            /*   const screenWidth = window.innerWidth;
+              if (screenWidth >= 1250) {
+                  setNumColumns(7); // Set number of columns to 7 for large screens
+              } else if (screenWidth >= 1024) {
+                  setNumColumns(5); // Set number of columns to 5 for medium screens
+              } else if (screenWidth >= 667) {
+                  setNumColumns(3); // Set number of columns to 3 for small screens
+              } else {
+                  setNumColumns(1); // Set number of columns to 1 for extra small screens
+              } */
+
         };
         // Call updateColumns function
         updateColumns();
-        
+
         // Add event listener for window resize event
         window.addEventListener('resize', updateColumns);
-        
+
         // Remove event listener when component is unmounted
         return () => {
             window.removeEventListener('resize', updateColumns);
@@ -171,10 +172,10 @@ const handleShow = () => {
                         <div className='row'>
                             <div className="col-12">
                                 <div className='heading_create'>
-                                <h3 className='page_heading'>
-                                            Event Management
-                                        </h3>
-                                    <div className='heading_otr'> 
+                                    <h3 className='page_heading'>
+                                        Event Management
+                                    </h3>
+                                    <div className='heading_otr'>
                                         <ThemeButton
                                             buttonClass="tag_button"
                                             buttonText="Today"
@@ -184,8 +185,8 @@ const handleShow = () => {
                                         />
                                     </div>
                                     <div className='create_icons'>
-                                        <Dropdown show={isFilterOpen} onToggle={handleFilterDropdownToggle} 
-                                        className="btn_actions" autoClose="outside" drop={'end'}>
+                                        <Dropdown show={isFilterOpen} onToggle={handleFilterDropdownToggle}
+                                            className="btn_actions" autoClose="outside" drop={width >= 567 ? 'end' : 'down-centered'}>   {/* 567 screen Drop Value Change  add this "down-centered" */}
                                             <Dropdown.Toggle className="btn-more icon_otr" id="dropdown-autoclose-outside">
                                                 <img className='user_icon' src={ProfileIcon} alt='icon' />
                                             </Dropdown.Toggle>
