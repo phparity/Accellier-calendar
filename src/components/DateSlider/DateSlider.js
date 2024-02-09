@@ -121,15 +121,27 @@ const DateSlider = ({ selectedDate, eventListData }) => {
     setCurrentDate(new Date(currentDate.getTime() + days * 24 * 60 * 60 * 1000));
   };
   // Set up swipe handlers
+  // const handlers = useSwipeable({
+  //   onSwipedLeft: () => handleSwipe(1), // Call handleSwipe with 1 when swiped left
+  //   onSwipedRight: () => handleSwipe(-1), // Call handleSwipe with -1 when swiped right
+  //   preventDefaultTouchmoveEvent: true, // Prevent default touchmove event
+  //   trackMouse: true, // Enable tracking of mouse events
+  //   delta: 30,                             // min distance(px) before a swipe starts. *See Notes*
+  //   trackTouch: true,                      // track touch input
+  //   swipeDuration: Infinity,               // allowable duration of a swipe (ms). *See Notes*
+  //   touchEventOptions: { passive: true },
+  // });
   const handlers = useSwipeable({
     onSwipedLeft: () => handleSwipe(1), // Call handleSwipe with 1 when swiped left
     onSwipedRight: () => handleSwipe(-1), // Call handleSwipe with -1 when swiped right
     preventDefaultTouchmoveEvent: true, // Prevent default touchmove event
     trackMouse: true, // Enable tracking of mouse events
-    delta: 30,                             // min distance(px) before a swipe starts. *See Notes*
-    trackTouch: true,                      // track touch input
+    delta: 10,                             // min distance(px) before a swipe starts. *See Notes*
     swipeDuration: Infinity,               // allowable duration of a swipe (ms). *See Notes*
     touchEventOptions: { passive: true },
+    swipeDuration: 500,
+    preventScrollOnSwipe: true,
+    trackMouse: true
   });
 
   useEffect(() => {
