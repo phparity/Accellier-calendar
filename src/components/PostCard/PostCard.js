@@ -7,8 +7,8 @@ import RedArrow from '../../assets/images/red-arrow.svg'
 import YellowArrow from '../../assets/images/yellow-arrow.svg'
 import GreenArrow from '../../assets/images/green-arrow.svg'
 import infoFilterIcon from '../../assets/images/filter-icon.svg'
-import informationIcon from '../../assets/images/information.svg' 
-import cashRegister from '../../assets/images/cash-register-icon.svg' 
+import informationIcon from '../../assets/images/information.svg'
+import cashRegister from '../../assets/images/cash-register-icon.svg'
 
 import './PostCard.scss'
 
@@ -57,58 +57,33 @@ function PostCard({ PostListData }) {
 
     // Define a state variable isOpenByDefault and a function setIsOpenByDefault to update it
     const [isOpenByDefault, setIsOpenByDefault] = useState(isOpenArray);
-/**
- * Toggles the isOpenByDefault state
- * @function
- */
-const handleToggle = () => {
     /**
-     * Sets the isOpenByDefault state to the opposite value
+     * Toggles the isOpenByDefault state
+     * @function
      */
-    setIsOpenByDefault(!isOpenByDefault);
-};
+    const handleToggle = () => {
+        /**
+         * Sets the isOpenByDefault state to the opposite value
+         */
+        setIsOpenByDefault(!isOpenByDefault);
+    };
 
-/**
- * Calculates the percentage and returns a list of arrow elements based on the given parameters.
- * @param {number} part - The numerator value.
- * @param {number} whole - The denominator value.
- * @param {string} arrowType - The type of arrow.
- * @returns {Array<ReactElement>} - The list of arrow elements.
- */
-const calculatePercentage = (part, whole, arrowType) => {
-    // Calculate the percentage value
-    let percentValue = (part / whole * 100);
+    /**
+     * Calculates the percentage and returns a list of arrow elements based on the given parameters.
+     * @param {number} part - The numerator value.
+     * @param {number} whole - The denominator value.
+     * @param {string} arrowType - The type of arrow.
+     * @returns {Array<ReactElement>} - The list of arrow elements.
+     */
+    const calculatePercentage = (task, totalTasks) => {
+        if (task < 0 || totalTasks <= 0) {
+            return 0
+        } 
+        const percentage = (task / totalTasks) * 100;
+        const roundedValue = Math.round(percentage * 10) / 10; // Round to one decimal place
 
-    // Round the percentage value and calculate the number of arrows
-    let roundedValue = Math.round((percentValue / 100) * 16);
-
-    // Define the arrow class and color based on the arrow type
-    let arrowClass = '';
-    let arrowColor = '';
-    if (arrowType === 'red_arrow') {
-        arrowClass = 'red_arrow_li';
-        arrowColor = RedArrow;
-    } else if (arrowType === 'yellow_arrow') {
-        arrowClass = 'yellow_arrow_li';
-        arrowColor = YellowArrow;
-    } else if (arrowType === 'green_arrow') {
-        arrowClass = 'green_arrow_li';
-        arrowColor = GreenArrow;
+        return roundedValue;
     }
-
-    // Create an array of arrow elements
-    let loopedValue = [];
-    for (let i = 0; i < roundedValue; i++) {
-        loopedValue.push(
-            <li className={arrowClass}>
-                <img className='arrow_img' src={arrowColor} alt='icon' />
-            </li>
-        );
-    }
-
-    // Return the array of arrow elements
-    return loopedValue;
-}
 
     // Check if PostListData is falsy or an empty string
     if (!PostListData || PostListData === "") {
@@ -145,7 +120,7 @@ const calculatePercentage = (part, whole, arrowType) => {
                         <p className='icon_text'>
                             {TimeText}
                         </p>
-                    </div> 
+                    </div>
                     <div className='icon_text_otr location_text_otr'>
                         <img className='icon' src={LocationIcon} alt='icon' />
                         <p className='icon_text'>
@@ -184,7 +159,7 @@ const calculatePercentage = (part, whole, arrowType) => {
                         {percentageText ? (
                             <div className='percentage_text_otr'>
                                 <p className='percentage_text'>
-                                    {percentageText.replace("%","")}<small>%</small>
+                                    {percentageText.replace("%", "")}<small>%</small>
                                 </p>
                             </div>
                         ) : (
@@ -218,7 +193,17 @@ const calculatePercentage = (part, whole, arrowType) => {
                                 </p>
                             </div>
                             <div className='task_arrow_inr'>
-                                <ul className='red_arrow'>
+                                <div className="progress-bar-box">
+                                    <div className="progress-bar-inner progress-bar-danger" role="progressbar" style={{ width: `${calculatePercentage(taskRedNum, totalTaskNum)}%` }}>
+                                    </div>
+
+                                    <div className="progress-bar-inner progress-bar-warning" role="progressbar" style={{ width: `${calculatePercentage(taskYellowNum, totalTaskNum)}%` }}>
+                                    </div>
+                                    <div className="progress-bar-inner progress-bar-success" role="progressbar" style={{ width: `${calculatePercentage(taskGreenNum, totalTaskNum)}%` }}>
+                                    </div>
+
+                                </div>
+                                {/* <ul className='red_arrow'>
                                     {calculatePercentage(taskRedNum, totalTaskNum, 'red_arrow')}
                                 </ul>
                                 <ul className='yellow_arrow'>
@@ -227,7 +212,7 @@ const calculatePercentage = (part, whole, arrowType) => {
                                 <ul className='green_arrow'>
 
                                     {calculatePercentage(taskGreenNum, totalTaskNum, 'green_arrow')}
-                                </ul>
+                                </ul> */}
                             </div>
                         </div>
                     </div>
@@ -248,7 +233,20 @@ const calculatePercentage = (part, whole, arrowType) => {
                                 </p>
                             </div>
                             <div className='task_arrow_inr'>
-                                <ul className='red_arrow'>
+                                <div className="progress-bar-box">
+                                    <div className="progress-bar-inner progress-bar-danger" role="progressbar" style={{ width: `${calculatePercentage(equipmentRedNum, totalEquipmentNum)}%` }}>
+
+                                    </div>
+
+                                    <div className="progress-bar-inner progress-bar-warning" role="progressbar" style={{ width: `${calculatePercentage(equipmentYellowNum, totalEquipmentNum)}%` }}>
+
+                                    </div>
+                                    <div className="progress-bar-inner progress-bar-success" role="progressbar" style={{ width: `${calculatePercentage(equipmentGreenNum, totalEquipmentNum)}%` }}>
+
+                                    </div>
+
+                                </div>
+                                {/* <ul className='red_arrow'>
                                     {calculatePercentage(equipmentRedNum, totalEquipmentNum, 'red_arrow')}
                                 </ul>
                                 <ul className='yellow_arrow'>
@@ -256,7 +254,7 @@ const calculatePercentage = (part, whole, arrowType) => {
                                 </ul>
                                 <ul className='green_arrow'>
                                     {calculatePercentage(equipmentGreenNum, totalEquipmentNum, 'green_arrow')}
-                                </ul>
+                                </ul> */}
                             </div>
                         </div>
                     </div>
@@ -277,7 +275,20 @@ const calculatePercentage = (part, whole, arrowType) => {
                                 </p>
                             </div>
                             <div className='task_arrow_inr'>
-                                <ul className='red_arrow'>
+                                <div className="progress-bar-box">
+                                    <div className="progress-bar-inner progress-bar-danger" role="progressbar" style={{ width: `${calculatePercentage(inventoryRedNum, totalInventoryNum)}%` }}>
+
+                                    </div>
+
+                                    <div className="progress-bar-inner progress-bar-warning" role="progressbar" style={{ width: `${calculatePercentage(inventoryYellowNum, totalInventoryNum)}%` }}>
+
+                                    </div>
+                                    <div className="progress-bar-inner progress-bar-success" role="progressbar" style={{ width: `${calculatePercentage(inventoryGreenNum, totalInventoryNum)}%` }}>
+
+                                    </div>
+
+                                </div>
+                                {/*  <ul className='red_arrow'>
                                     {calculatePercentage(inventoryRedNum, totalInventoryNum, 'red_arrow')}
                                 </ul>
                                 <ul className='yellow_arrow'>
@@ -285,7 +296,7 @@ const calculatePercentage = (part, whole, arrowType) => {
                                 </ul>
                                 <ul className='green_arrow'>
                                     {calculatePercentage(inventoryGreenNum, totalInventoryNum, 'green_arrow')}
-                                </ul>
+                                </ul> */}
                             </div>
                         </div>
                     </div>
@@ -306,7 +317,20 @@ const calculatePercentage = (part, whole, arrowType) => {
                                 </p>
                             </div>
                             <div className='task_arrow_inr'>
-                                <ul className='red_arrow'>
+                                <div className="progress-bar-box">
+                                    <div className="progress-bar-inner progress-bar-danger" role="progressbar" style={{ width: `${calculatePercentage(staffingRedNum, totalStaffingNum)}%` }}>
+
+                                    </div>
+
+                                    <div className="progress-bar-inner progress-bar-warning" role="progressbar" style={{ width: `${calculatePercentage(staffingYellowNum, totalStaffingNum)}%` }}>
+
+                                    </div>
+                                    <div className="progress-bar-inner progress-bar-success" role="progressbar" style={{ width: `${calculatePercentage(staffingGreenNum, totalStaffingNum)}%` }}>
+
+                                    </div>
+
+                                </div>
+                                {/* <ul className='red_arrow'>
                                     {calculatePercentage(staffingRedNum, totalStaffingNum, 'red_arrow')}
                                 </ul>
                                 <ul className='yellow_arrow'>
@@ -314,7 +338,7 @@ const calculatePercentage = (part, whole, arrowType) => {
                                 </ul>
                                 <ul className='green_arrow'>
                                     {calculatePercentage(staffingGreenNum, totalStaffingNum, 'green_arrow')}
-                                </ul>
+                                </ul> */}
                             </div>
                         </div>
                     </div>
