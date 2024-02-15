@@ -182,24 +182,24 @@ function PostCard({ PostListData }) {
                         </p>
                         <div className='task_row'>
                             <div className='task_num_inr'>
-                                <p className='red_arrow_num arrow_num'>
+                                <p className='red_arrow_num arrow_num' style={{ width: `${calculatePercentage(taskRedNum, totalTaskNum)}%` }}>
                                     {taskRedNum}
                                 </p>
-                                <p className='yellow_arrow_num arrow_num'>
+                                <p className='yellow_arrow_num arrow_num' style={{ width: `${calculatePercentage(taskYellowNum, totalTaskNum)}%` }}>
                                     {taskYellowNum}
                                 </p>
-                                <p className='green_arrow_num arrow_num'>
+                                <p className='green_arrow_num arrow_num' style={{ width: `${calculatePercentage(taskGreenNum, totalTaskNum)}%` }}>
                                     {taskGreenNum}
                                 </p>
                             </div>
                             <div className='task_arrow_inr'>
                                 <div className="progress-bar-box">
-                                    <div className="progress-bar-inner progress-bar-danger" role="progressbar" style={{ width: `${calculatePercentage(taskRedNum, totalTaskNum)}%` }}>
+                                    <div className="progress-bar-inner progress-bar-danger" style={{ width: `${calculatePercentage(taskRedNum, totalTaskNum)}%` }}>
                                     </div>
 
-                                    <div className="progress-bar-inner progress-bar-warning" role="progressbar" style={{ width: `${calculatePercentage(taskYellowNum, totalTaskNum)}%` }}>
+                                    <div className="progress-bar-inner progress-bar-warning" style={{ width: `${calculatePercentage(taskYellowNum, totalTaskNum)}%` }}>
                                     </div>
-                                    <div className="progress-bar-inner progress-bar-success" role="progressbar" style={{ width: `${calculatePercentage(taskGreenNum, totalTaskNum)}%` }}>
+                                    <div className="progress-bar-inner progress-bar-success" style={{ width: `${calculatePercentage(taskGreenNum, totalTaskNum)}%` }}>
                                     </div>
 
                                 </div>
@@ -222,26 +222,26 @@ function PostCard({ PostListData }) {
                         </p>
                         <div className='task_row'>
                             <div className='task_num_inr'>
-                                <p className='red_arrow_num arrow_num'>
+                                <p className='red_arrow_num arrow_num' style={{ width: `${calculatePercentage(equipmentRedNum, totalEquipmentNum)}%` }}>
                                     {equipmentRedNum}
                                 </p>
-                                <p className='yellow_arrow_num arrow_num'>
+                                <p className='yellow_arrow_num arrow_num' style={{ width: `${calculatePercentage(equipmentYellowNum, totalEquipmentNum)}%` }}>
                                     {equipmentYellowNum}
                                 </p>
-                                <p className='green_arrow_num arrow_num'>
+                                <p className='green_arrow_num arrow_num' style={{ width: `${calculatePercentage(equipmentGreenNum, totalEquipmentNum)}%` }}>
                                     {equipmentGreenNum}
                                 </p>
                             </div>
                             <div className='task_arrow_inr'>
                                 <div className="progress-bar-box">
-                                    <div className="progress-bar-inner progress-bar-danger" role="progressbar" style={{ width: `${calculatePercentage(equipmentRedNum, totalEquipmentNum)}%` }}>
+                                    <div className="progress-bar-inner progress-bar-danger" style={{ width: `${calculatePercentage(equipmentRedNum, totalEquipmentNum)}%` }}>
 
                                     </div>
 
-                                    <div className="progress-bar-inner progress-bar-warning" role="progressbar" style={{ width: `${calculatePercentage(equipmentYellowNum, totalEquipmentNum)}%` }}>
+                                    <div className="progress-bar-inner progress-bar-warning" style={{ width: `${calculatePercentage(equipmentYellowNum, totalEquipmentNum)}%` }}>
 
                                     </div>
-                                    <div className="progress-bar-inner progress-bar-success" role="progressbar" style={{ width: `${calculatePercentage(equipmentGreenNum, totalEquipmentNum)}%` }}>
+                                    <div className="progress-bar-inner progress-bar-success" style={{ width: `${calculatePercentage(equipmentGreenNum, totalEquipmentNum)}%` }}>
 
                                     </div>
 
@@ -264,26 +264,26 @@ function PostCard({ PostListData }) {
                         </p>
                         <div className='task_row'>
                             <div className='task_num_inr'>
-                                <p className='red_arrow_num arrow_num'>
+                                <p className='red_arrow_num arrow_num' style={{ width: `${calculatePercentage(inventoryRedNum, totalInventoryNum)}%` }}>
                                     {inventoryRedNum}
                                 </p>
-                                <p className='yellow_arrow_num arrow_num'>
+                                <p className='yellow_arrow_num arrow_num' style={{ width: `${calculatePercentage(inventoryYellowNum, totalInventoryNum)}%` }}>
                                     {inventoryYellowNum}
                                 </p>
-                                <p className='green_arrow_num arrow_num'>
+                                <p className='green_arrow_num arrow_num' style={{ width: `${calculatePercentage(inventoryGreenNum, totalInventoryNum)}%` }}>
                                     {inventoryGreenNum}
                                 </p>
                             </div>
                             <div className='task_arrow_inr'>
                                 <div className="progress-bar-box">
-                                    <div className="progress-bar-inner progress-bar-danger" role="progressbar" style={{ width: `${calculatePercentage(inventoryRedNum, totalInventoryNum)}%` }}>
+                                    <div className="progress-bar-inner progress-bar-danger" style={{ width: `${calculatePercentage(inventoryRedNum, totalInventoryNum)}%` }}>
 
                                     </div>
 
-                                    <div className="progress-bar-inner progress-bar-warning" role="progressbar" style={{ width: `${calculatePercentage(inventoryYellowNum, totalInventoryNum)}%` }}>
+                                    <div className="progress-bar-inner progress-bar-warning" style={{ width: `${calculatePercentage(inventoryYellowNum, totalInventoryNum)}%` }}>
 
                                     </div>
-                                    <div className="progress-bar-inner progress-bar-success" role="progressbar" style={{ width: `${calculatePercentage(inventoryGreenNum, totalInventoryNum)}%` }}>
+                                    <div className="progress-bar-inner progress-bar-success" style={{ width: `${calculatePercentage(inventoryGreenNum, totalInventoryNum)}%` }}>
 
                                     </div>
 
@@ -306,26 +306,26 @@ function PostCard({ PostListData }) {
                         </p>
                         <div className='task_row'>
                             <div className='task_num_inr'>
-                                <p className='red_arrow_num arrow_num'>
+                                <p className='red_arrow_num arrow_num' style={{ width: `${calculatePercentage(staffingRedNum, totalStaffingNum)}%` }}>
                                     {staffingRedNum}
                                 </p>
-                                <p className='yellow_arrow_num arrow_num'>
+                                <p className='yellow_arrow_num arrow_num' style={{ width: `${calculatePercentage(staffingYellowNum, totalStaffingNum)}%` }}>
                                     {staffingYellowNum}
                                 </p>
-                                <p className='green_arrow_num arrow_num'>
+                                <p className='green_arrow_num arrow_num' style={{ width: `${calculatePercentage(staffingGreenNum, totalStaffingNum)}%` }}>
                                     {staffingGreenNum}
                                 </p>
                             </div>
                             <div className='task_arrow_inr'>
                                 <div className="progress-bar-box">
-                                    <div className="progress-bar-inner progress-bar-danger" role="progressbar" style={{ width: `${calculatePercentage(staffingRedNum, totalStaffingNum)}%` }}>
+                                    <div className="progress-bar-inner progress-bar-danger" style={{ width: `${calculatePercentage(staffingRedNum, totalStaffingNum)}%` }}>
 
                                     </div>
 
-                                    <div className="progress-bar-inner progress-bar-warning" role="progressbar" style={{ width: `${calculatePercentage(staffingYellowNum, totalStaffingNum)}%` }}>
+                                    <div className="progress-bar-inner progress-bar-warning" style={{ width: `${calculatePercentage(staffingYellowNum, totalStaffingNum)}%` }}>
 
                                     </div>
-                                    <div className="progress-bar-inner progress-bar-success" role="progressbar" style={{ width: `${calculatePercentage(staffingGreenNum, totalStaffingNum)}%` }}>
+                                    <div className="progress-bar-inner progress-bar-success" style={{ width: `${calculatePercentage(staffingGreenNum, totalStaffingNum)}%` }}>
 
                                     </div>
 

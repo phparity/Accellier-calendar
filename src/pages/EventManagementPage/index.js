@@ -211,7 +211,7 @@ function EventManagementModule() {
 
                 <div className="event-box container-fluid">
 
-                    <div className="row">
+                    <div className="row"> 
                         <div className="col-12 p-0">
                             <DateSlider selectedDate={todaysDate} eventListData={eventListData} />
                         </div>
