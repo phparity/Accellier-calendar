@@ -2,6 +2,7 @@ import axios from "axios";
 
 const CustomAxios = axios.create({
   // baseURL: "https://api.automateevents.com"
+  // baseURL: "https://events-dev1.accellier.net/saasevent/public"
   baseURL: "https://dev-api.automateevents.com:8444/"
 });
 

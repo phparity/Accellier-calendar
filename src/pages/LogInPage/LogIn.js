@@ -102,7 +102,7 @@ let viewData = {'view_name': sessionStorage.getItem('vwname'), 'user_ip': sessio
       })
       .catch(err => {
         {
-          loginData= [{...viewData, 'user_id': localStorage.getItem('userid'), 'api': '/login', 'status_code': err.status, 'module_name' : 'login', 'company_id': '', 'payload': data, 'response' : [], 'error_details': err}]; 
+          loginData= [{...viewData, 'user_id': localStorage.getItem('userid'), 'api': '/login', 'status_code': err.response.status, 'module_name' : 'login', 'company_id': '', 'payload': data, 'response' : [], 'error_details': err}]; 
           alert("Wrong Email or Password.", { err });
           handleClose();
           if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
@@ -166,7 +166,7 @@ let viewData = {'view_name': sessionStorage.getItem('vwname'), 'user_ip': sessio
                     })
                     .catch(err => {
                       {
-                      loginData= [{...viewData, 'user_id': localStorage.getItem('userid'), 'api': '/login', 'status_code': err.status, 'module_name' : 'login', 'company_id': '', 'payload': data, 'response' : '', 'error_details': err}]; 
+                      loginData= [{...viewData, 'user_id': localStorage.getItem('userid'), 'api': '/login', 'status_code': err.response.status, 'module_name' : 'login', 'company_id': '', 'payload': data, 'response' : '', 'error_details': err}]; 
                         alert("Wrong Email or Password.", { err });
                         if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                           // recordErrorAPIdata('cust2', ...loginData);

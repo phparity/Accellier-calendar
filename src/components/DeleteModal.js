@@ -66,7 +66,7 @@ import { recordErrorAPIdata } from '../service/useApiData.js';
           })
           .catch((err) => {
             console.log(err);
-            logData = [{...viewData, 'module_name': module_name, 'api': `/${pathName}`, 'payload':'', 'response':[], 'error_details': err, 'status_code':'' }];
+            logData = [{...viewData, 'module_name': module_name, 'api': `/${pathName}`, 'payload':'', 'response':[], 'error_details': err, 'status_code': err.response.status }];
             if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
               recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
             }

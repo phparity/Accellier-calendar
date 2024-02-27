@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Post Accordion Component renders correctly 1`] = `
+<div
+  className="PostAccordion_otr"
+>
+  <div
+    className="accordion_item"
+  >
+    <div
+      className="accordion_header "
+      onClick={[Function]}
+    >
+      Title 1
+    </div>
+  </div>
+  <div
+    className="accordion_item"
+  >
+    <div
+      className="accordion_header "
+      onClick={[Function]}
+    >
+      Title 2
+    </div>
+  </div>
+  <div
+    className="accordion_item"
+  >
+    <div
+      className="accordion_header "
+      onClick={[Function]}
+    >
+      Title 3
+    </div>
+  </div>
+</div>
+`;

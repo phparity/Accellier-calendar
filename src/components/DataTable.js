@@ -44,7 +44,6 @@ const DataTable = (props)=> {
     const storage = useStorage();
 
   const {smShowError, setSmShowError,error_msg, setError_msg } = useContext(searchTableModuleValue)
-
     const {authState,setAuthState} = useContext(AuthContext)
     const { current_pages, setCurrent_pages} = useContext(d_table)
     const tenantCname = authState.tenant_cname
@@ -121,8 +120,10 @@ const DataTable = (props)=> {
 
 
     let module_name = CheckModuleName()
-    const handleQueryString = useLocation().search;
-   
+    // const handleQueryString = useLocation().search;  commented for the jest changes
+    const location = useLocation();
+    const handleQueryString = location ? location.search : '';
+    
 
     let nice = ""
 
@@ -140,9 +141,19 @@ const DataTable = (props)=> {
 
 //   let valuexy = JSON.stringify(valuex).replace(/[\{\}\"]/g, '').replace(/:/g, "=").replace(/,/g, "@")
 
-  let valuexy = Object.entries(valuex)
-    .map(([key, value]) => `${key}=${value.replace(/,/g, '')}`)
-    .join(valuex.length > 1 ? ',' : '&');
+//   let valuexy = Object.entries(valuex)
+//     .map(([key, value]) => `${key}=${value.replace(/,/g, '')}`)
+//     .join(valuex.length > 1 ? ',' : '&');
+
+    let valuexy
+    if (valuex && typeof valuex === 'object') {
+        valuexy = Object.entries(valuex)
+          .map(([key, value]) => `${key}=${value.replace(/,/g, '')}`)
+          .join(valuex.length > 1 ? ',' : '&');
+      } else {
+        // Handle the case when valuex is undefined or not an object
+        valuexy = ''; // or some other default value
+      }
     
    const data1= Param.data5(module_name)
    const data3= Param.data7(authState.page,authState.line,authState.roleid,authState.userid)

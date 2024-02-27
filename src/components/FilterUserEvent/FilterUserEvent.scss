@@ -1,4 +1,4 @@
-@import '../../assets/common-style/variable.scss';
+@import "../../assets/common-style/variable.scss";
 
 
  
@@ -13,13 +13,15 @@
     }
 }
 
-#dropdown-autoclose-outside:after{
-    border: 0;
-    background-color: #f8f9fc;
-    margin: 0;
+#dropdown-autoclose-outside:after {
+  border: 0;
+  background-color: #f8f9fc;
+  margin: 0;
 }
-.create_icons .dropdown-item:focus, .create_icons .dropdown-item:hover, .create_icons .dropdown-item:active{
-    background-color: inherit !important;
+.create_icons .dropdown-item:focus,
+.create_icons .dropdown-item:hover,
+.create_icons .dropdown-item:active {
+  background-color: inherit !important;
 }
 .event_action_btn{
     display: flex;

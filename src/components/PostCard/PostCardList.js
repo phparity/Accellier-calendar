@@ -430,7 +430,7 @@ const PostCardList = [
     },
     {
         id: 12,
-        isOpenArray: true,
+        isOpenArray: false,
         date: "1/12/2024",
         cardClass:'single_days',
         cardHeading: 'International Music Concert ',
@@ -469,7 +469,7 @@ const PostCardList = [
     },
     {
         id: 13,
-        isOpenArray: true,
+        isOpenArray: false,
         date: "1/13/2024",
         cardClass:'single_days',
         cardHeading: 'International Music Concert ',
@@ -742,4 +742,4 @@ const PostCardList = [
     },
 ]
 
-export default PostCardList
+export default PostCardList;

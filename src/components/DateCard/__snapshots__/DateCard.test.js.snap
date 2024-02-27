@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DateCard Component renders correctly 1`] = `
+<div
+  className="date_card_otr undefined"
+  data-testid="date-card-outer"
+>
+  <div
+    className="date_card_inr"
+  >
+    <h3
+      className="date_text"
+    >
+      2024-02-08
+    </h3>
+    <p
+      className="day_text"
+    >
+      Monday
+    </p>
+  </div>
+</div>
+`;

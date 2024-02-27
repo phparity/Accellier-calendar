@@ -23,7 +23,7 @@ const usePutReq = () => {
         })
         .catch((err) => {
           if (onError) onError(err);
-          logData = [{...viewData, 'module_name': pathName, 'payload': data, 'api': `/${pathName}`, 'response':[], 'error_details': err , 'status_code': ''}];
+          logData = [{...viewData, 'module_name': pathName, 'payload': data, 'api': `/${pathName}`, 'response':[], 'error_details': err , 'status_code': err.response.status}];
           if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
             recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
           }

@@ -185,13 +185,13 @@ function EventManagementModule() {
                                         />
                                     </div>
                                     <div className='create_icons'>
-                                        <Dropdown show={isFilterOpen} onToggle={handleFilterDropdownToggle}
+                                        <Dropdown data-testid="filter-button" show={isFilterOpen} onToggle={handleFilterDropdownToggle}
                                             className="btn_actions" autoClose="outside" drop={width >= 567 ? 'end' : 'down-centered'}>   {/* 567 screen Drop Value Change  add this "down-centered" */}
                                             <Dropdown.Toggle className="btn-more icon_otr" id="dropdown-autoclose-outside">
                                                 <img className='user_icon' src={ProfileIcon} alt='icon' />
                                             </Dropdown.Toggle>
                                             {
-                                                <FilterUserEvent handleFilterCloseButton={handleFilterCloseButton} filterValue={filterValue?.length > 0 ? filterValue : null} handleFilterSelection={handleFilterSelection} handleEventFilteredData={handleEventFilteredData} />
+                                                <FilterUserEvent data-testid="filter-close-button" handleFilterCloseButton={handleFilterCloseButton} filterValue={filterValue?.length > 0 ? filterValue : null} handleFilterSelection={handleFilterSelection} handleEventFilteredData={handleEventFilteredData} />
                                             }
                                         </Dropdown>
                                         <DatePickerComponent setTodaysDate={setTodaysDate} />

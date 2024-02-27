@@ -59,7 +59,10 @@ const MoreDropDown = (props) => {
     if(swid !="")
     { data3 = Param.data3(module_name,swid,exp_cus_id) } 
 
-    const handleQueryString = useLocation().search;
+    // const handleQueryString = useLocation().search;
+    const location = useLocation();
+    const handleQueryString = location ? location.search : '';
+    
 
     let nice = ""
 
@@ -192,7 +195,7 @@ const MoreDropDown = (props) => {
                     </div>
                     {
                         module_name !== "report" ?
-                            details.module_access >= 2 ?
+                            details?.module_access >= 2 ?
                                 <Buttons click={handleCreate} class="crt_btn">
                                     <Link target='_self' to={( module_name == "invoice" || module_name == "opportunity" || module_name == "supplierorder"||module_name == "supplierorderreturn") ? linkChangeForOpportunity3 :linkChangeForOpportunity}>
                                         <div><i className="crt_btn_i"><RiAddCircleLine /></i>
@@ -241,7 +244,6 @@ const MoreDropDown = (props) => {
                        
 
                     </Modal.Body>
-
                 </Modal>
             </>
         )

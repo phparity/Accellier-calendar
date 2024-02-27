@@ -6,6 +6,7 @@ import { FIELDDATAAPI, FIELDSAPI } from "./ApiPath"
     let viewData = {};
   viewData = {'view_name': sessionStorage.getItem('vwname'),  'user_ip': sessionStorage.getItem('ipAddress')};
 export const getFieldsApiData = (tenantCname, module_name,storage) => {
+    console.log('module_name',module_name);
     const {getData,saveData} = storage;
     const data = getData(`v_/cust2/api/fields_${(module_name?`module_${module_name}`:"")}`)
     if(!data) return axios.get(FIELDSAPI(tenantCname), {
@@ -28,11 +29,11 @@ export const getFieldsApiData = (tenantCname, module_name,storage) => {
         })
         .catch(
             err => {
-                logData = [{...viewData, 'module_name': module_name, 'payload': {"module": module_name}, 'api': `/${module_name}`, 'response':[], 'error_details': err , 'status_code': err.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
+                logData = [{...viewData, 'module_name': module_name, 'payload': {"module": module_name}, 'api': `/${module_name}`, 'response':[], 'error_details': err , 'status_code': err.response.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
                 if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                     recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
                 }
-                return err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response;
+                return (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response;
             }
         )
 
@@ -69,11 +70,11 @@ export const getEditApiData = (tenantCname, authState, apiPath) => {
             )
         .catch(
             err => {
-                logData = [{...viewData, 'module_name': pathName, 'payload': {"company_id": authState.companyId || authState.company_id}, 'api': `/${pathName}`, 'response':[], 'error_details': err , 'status_code': err.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
+                logData = [{...viewData, 'module_name': pathName, 'payload': {"company_id": authState.companyId || authState.company_id}, 'api': `/${pathName}`, 'response':[], 'error_details': err , 'status_code': err.response.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
                 if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                     recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
                 }
-                return err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response}
+                return (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response}
             )
 }
 
@@ -101,11 +102,11 @@ export const getDuplicateApiData = (tenantCname, authState, apiPath) => {
         )
         .catch(
             err => {
-                logData = [{...viewData, 'module_name': pathName, 'payload': {"company_id": authState.companyId || authState.company_id}, 'api': `/${pathName}`, 'response':[], 'error_details': err , 'status_code': err.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
+                logData = [{...viewData, 'module_name': pathName, 'payload': {"company_id": authState.companyId || authState.company_id}, 'api': `/${pathName}`, 'response':[], 'error_details': err , 'status_code': err.response.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
                 if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                     recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
                 }
-                return err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response}
+                return (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response}
         )
 }
 
@@ -129,11 +130,11 @@ export const getRelatedModuleApiData = (tenantCname, forChange, authState) => {
         })
         .catch(
             err => {
-                logData = [{...viewData, 'module_name': localStorage.getItem("prev_c_id"), 'payload': {"company_id": authState.companyId || authState.company_id}, 'api': `/${localStorage.getItem("prev_c_id")}`, 'response':[], 'error_details': err , 'status_code': err.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
+                logData = [{...viewData, 'module_name': localStorage.getItem("prev_c_id"), 'payload': {"company_id": authState.companyId || authState.company_id}, 'api': `/${localStorage.getItem("prev_c_id")}`, 'response':[], 'error_details': err , 'status_code': err.response.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
                 if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                     recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
                 }
-                return err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response
+                return (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response
             })
 }
 export const allUserListApi = (tenantCname) => {
@@ -153,11 +154,11 @@ export const allUserListApi = (tenantCname) => {
         })
         .catch(
             err => {
-                logData = [{...viewData, 'module_name': 'alluserlist', 'payload': '', 'api': `/${'alluserlist'}`, 'response':[], 'error_details': err , 'status_code': err.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
+                logData = [{...viewData, 'module_name': 'alluserlist', 'payload': '', 'api': `/${'alluserlist'}`, 'response':[], 'error_details': err , 'status_code': err.response.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
                 if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                     recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
                 }
-                return err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response}
+                return (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response}
         )
 }
 
@@ -196,11 +197,11 @@ export const workFlowDySubmit = (tenantCname, module_name, swid, num, dy_form_da
                 "wid": swid,
                 "formtype": "1",
                 "stepnum": num,
-                "email": dy_form_data}, 'api': `/${'wsteps'}`, 'response':[], 'error_details': err , 'status_code': err.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
+                "email": dy_form_data}, 'api': `/${'wsteps'}`, 'response':[], 'error_details': err , 'status_code': err.response.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
                 if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                     recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
                 }
-                return err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response}
+                return (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response}
         )
 }
 
@@ -243,11 +244,11 @@ export const soreceipt_module_post_api = (tenantCname, add, custom, data2, heade
             // "lines": linearray,
             "lines": data2,
             "createevent": custom.start_date !== undefined ? true : false
-        }, 'api': `/${'supplierorderreceipt'}`, 'response':[], 'error_details': err , 'status_code': err.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
+        }, 'api': `/${'supplierorderreceipt'}`, 'response':[], 'error_details': err , 'status_code': err.response.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
                 if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                     recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
                 }
-                return err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response}
+                return (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response}
         )
 }
 export const put_api_forall_module = (tenantCname, module_name, add, custom, e_id, headers) => {
@@ -281,11 +282,11 @@ export const put_api_forall_module = (tenantCname, module_name, add, custom, e_i
             "custom": custom,
             "source": "web",
             "status": "1"
-        }, 'api': `/${module_name}s`, 'response':[], 'error_details': err , 'status_code': err.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
+        }, 'api': `/${module_name}s`, 'response':[], 'error_details': err , 'status_code': err.response.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
                 if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                     recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
                 }
-                return err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response}
+                return (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response}
         )
 }
 export const multiedit_api_forall_module = (tenantCname, module_name, medit, addForMulti, mutliids, headers) => {
@@ -312,11 +313,11 @@ export const multiedit_api_forall_module = (tenantCname, module_name, medit, add
                 logData = [{...viewData, 'module_name': module_name, 'payload': {
             "custom": addForMulti,
             "multi_edit": mutliids
-        }, 'api': `/${module_name}s`, 'response':[], 'error_details': err , 'status_code': err.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
+        }, 'api': `/${module_name}s`, 'response':[], 'error_details': err , 'status_code': err.response.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
                 if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                     recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
                 }
-                return err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response}
+                return (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response}
         )
 }
 export const op_and_payroll_editapi = (tenantCname, module_name, add, endPart, custom, headers) => {
@@ -350,11 +351,11 @@ export const op_and_payroll_editapi = (tenantCname, module_name, add, endPart, c
             "custom": custom,
             "source": "web",
             "status": "1"
-        }, 'api': `/${endPart}`, 'response':[], 'error_details': err , 'status_code': err.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
+        }, 'api': `/${endPart}`, 'response':[], 'error_details': err , 'status_code': err.response.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
                 if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                     recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
                 }
-                return err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response}
+                return (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response}
         )
 }
 export const editapi = (tenantCname, module_name, add, custom, apiPath, headers) => {
@@ -390,11 +391,11 @@ export const editapi = (tenantCname, module_name, add, custom, apiPath, headers)
             "custom": custom,
             "source": "web",
             "status": "1"
-        }, 'api': `/${pathName}`, 'response':[], 'error_details': err , 'status_code': err.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
+        }, 'api': `/${pathName}`, 'response':[], 'error_details': err , 'status_code': err.response.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
                 if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                     recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
                 }
-                return err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response}
+                return (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response}
         )
 }
 export const postapi = (tenantCname, module_name, custom, add_forName, headers,autofillnumm) => {
@@ -428,11 +429,11 @@ export const postapi = (tenantCname, module_name, custom, add_forName, headers,a
             "custom": custom,
             "source": "web",
             "status": "1",
-        }, 'api': `/${module_name}`, 'response':[], 'error_details': err , 'status_code': err.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
+        }, 'api': `/${module_name}`, 'response':[], 'error_details': err , 'status_code': err.response.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
                 if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                     recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
                 }
-                return err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response}
+                return (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response}
         )
 }
 export const for_updating_calculation = (tenantCname, e_id, customtemp, custoupdate, headers) => {
@@ -471,11 +472,11 @@ export const for_updating_calculation = (tenantCname, e_id, customtemp, custoupd
             "status": "1",
             "updateall": 1,
             "createevent": true,
-        }, 'api': `/${'opportunities'}`, 'response':[], 'error_details': err , 'status_code': err.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
+        }, 'api': `/${'opportunities'}`, 'response':[], 'error_details': err , 'status_code': err.response.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
                 if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                     recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
                 }
-                return err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response}
+                return (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response}
         )
 }
 export const getData_of_opexpense = (tenantCname) => {
@@ -510,11 +511,11 @@ export const getData_of_opexpense = (tenantCname) => {
           "relatedmodule": "operationalexpense",
           "ipp": "200",
           "recordid": localStorage.getItem('c_id') || localStorage.getItem("prev_c_id")
-        }, 'api': `/${'relatedmodule'}`, 'response':[], 'error_details': err , 'status_code': err.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
+        }, 'api': `/${'relatedmodule'}`, 'response':[], 'error_details': err , 'status_code': err.response.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
                 if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                     recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
                 }
-                return err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response}
+                return (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response}
         )
 }
 export const getData_of_payrollcosts = (tenantCname) => {
@@ -551,11 +552,11 @@ export const getData_of_payrollcosts = (tenantCname) => {
           "ipp": "200",
           "relatedmodule": "payrollcosts",
           "recordid": localStorage.getItem('c_id') || localStorage.getItem("prev_c_id")
-        }, 'api': `/${'relatedmodule'}`, 'response':[], 'error_details': err , 'status_code': err.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
+        }, 'api': `/${'relatedmodule'}`, 'response':[], 'error_details': err , 'status_code': err.response.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
                 if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                     recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
                 }
-                return err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response}
+                return (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response}
         )
 }
 
@@ -615,11 +616,11 @@ export const put_api_for_opfile = (tenantCname,forthis,e_id,headers,add,custom,i
       "lines": data2,
       "createevent": custom.start_date !== undefined ? true : false,
       "updateall": radioEditOption
-    }, 'api': `/${forthis}s`, 'response':[], 'error_details': err , 'status_code': err.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
+    }, 'api': `/${forthis}s`, 'response':[], 'error_details': err , 'status_code': err.response.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
                 if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                     recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
                 }
-                return err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response}
+                return (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response}
         )
 }
 export const put_api2_of_opfile = (tenantCname,forthis,e_id,add,custom,isrecurr,reccuringruleSave,radioEditOption,module_name) => {
@@ -666,11 +667,11 @@ export const put_api2_of_opfile = (tenantCname,forthis,e_id,add,custom,isrecurr,
       "recurring": isrecurr ? reccuringruleSave : null,
       "createevent": custom.start_date !== undefined ? true : false,
       "updateall": radioEditOption
-    }, 'api': `/${forthis}s`, 'response':[], 'error_details': err , 'status_code': err.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
+    }, 'api': `/${forthis}s`, 'response':[], 'error_details': err , 'status_code': err.response.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
                 if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                     recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
                 }
-                return err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response}
+                return (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response}
         )
 }
 export const put_api3_of_opfile = (tenantCname,forthis,e_id,add,module_name,custom,data2,radioEditOption) => {
@@ -713,11 +714,11 @@ export const put_api3_of_opfile = (tenantCname,forthis,e_id,add,module_name,cust
                 "status": "1",
                 "lines": data2,
                 "createevent": custom.start_date !== undefined ? true : false,
-                "updateall": radioEditOption}, 'api': `/${forthis}s`, 'response':[], 'error_details': err , 'status_code': err.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
+                "updateall": radioEditOption}, 'api': `/${forthis}s`, 'response':[], 'error_details': err , 'status_code': err.response.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
                 if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                     recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
                 }
-                return err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response}
+                return (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response}
         )
 }
 
@@ -765,11 +766,11 @@ export const put_api_forrelatedmodule = (tenantCname,forthis,e_id,add,module_nam
       // "recurring": reccuringruleSave,
       "createevent": custom.start_date !== undefined ? true : false,
       "updateall": radioEditOption
-    }, 'api': `/${forthis}s`, 'response':[], 'error_details': err , 'status_code': err.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
+    }, 'api': `/${forthis}s`, 'response':[], 'error_details': err , 'status_code': err.response.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
                 if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                     recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
                 }
-                return err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response}
+                return (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response}
         )
 }
 
@@ -805,11 +806,11 @@ export const put_api_formultiedit_opfile = (tenantCname,forthis,medit,module_nam
       "custom": addForMulti,
       "updateall": radioEditOption,
       "multi_edit": mutliids
-    }, 'api': `/${forthis}s`, 'response':[], 'error_details': err , 'status_code': err.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
+    }, 'api': `/${forthis}s`, 'response':[], 'error_details': err , 'status_code': err.response.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
                 if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                     recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
                 }
-                return err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response}
+                return (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response}
         )
 }
 
@@ -877,11 +878,11 @@ export const post_api_opfile = (tenantCname,module_name,add,custom,isrecurr,recc
       // "lines": linearray,
       "lines": data2,
       "createevent": custom2.start_date !== undefined ? true : false
-    }, 'api': `/${module_name}`, 'response':[], 'error_details': err , 'status_code': err.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
+    }, 'api': `/${module_name}`, 'response':[], 'error_details': err , 'status_code': err.response.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
                 if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                     recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
                 }
-                return err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response}
+                return (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response}
         )
 }
 
@@ -928,11 +929,11 @@ export const put_api_delete_line = (module_name,add, custom, data3, headers,apiP
           "lines": data3,
           "createevent": custom.start_date !== undefined ? true : false,
           "updateall": radioEditOption
-        }, 'api': `/${pathName}`, 'response':[], 'error_details': err , 'status_code': err.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
+        }, 'api': `/${pathName}`, 'response':[], 'error_details': err , 'status_code': err.response.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
                 if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                     recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
                 }
-                return err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response}
+                return (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response}
         )
 }
 
@@ -952,11 +953,11 @@ export const getReportDetailsAPIdata = (tenantCname, id) => {
             })
         .catch(
             err => {
-                logData = [{...viewData, 'module_name': 'detailreport', 'payload': {'id': id}, 'api': `/${'detailreport'}`, 'response':[], 'error_details': err , 'status_code': err.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
+                logData = [{...viewData, 'module_name': 'detailreport', 'payload': {'id': id}, 'api': `/${'detailreport'}`, 'response':[], 'error_details': err , 'status_code': err.response.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
                 if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                     recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
                 }
-                return err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response}
+                return (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response}
         )
 }
 
@@ -976,11 +977,11 @@ export const getReportSubjectdata = (tenantCname) => {
             })
         .catch(
             err => {
-                logData = [{...viewData, 'module_name': 'reportsubjectarea', 'payload': '', 'api': `/${'reportsubjectarea'}`, 'response':[], 'error_details': err , 'status_code': err.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
+                logData = [{...viewData, 'module_name': 'reportsubjectarea', 'payload': '', 'api': `/${'reportsubjectarea'}`, 'response':[], 'error_details': err , 'status_code': err.response.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
                 if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                     recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
                 }
-                return err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response}
+                return (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response}
         )
 }
 
@@ -1000,11 +1001,11 @@ export const getReportFieldsAddEditAPIdata = (tenantCname, addEditApi, id) => {
             })
         .catch(
             err => {
-                logData = [{...viewData, 'module_name': 'report', 'payload': {'id': id}, 'api': `/${addEditApi}`, 'response':[], 'error_details': err , 'status_code': err.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
+                logData = [{...viewData, 'module_name': 'report', 'payload': {'id': id}, 'api': `/${addEditApi}`, 'response':[], 'error_details': err , 'status_code': err.response.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
                 if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                     recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
                 }
-                return err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response}
+                return (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response}
         )
 }
 
@@ -1025,11 +1026,11 @@ export const getReportFieldsUpdateAPIdata = (tenantCname, addEditApi, id, apiDat
             })
         .catch(
             err => {
-                logData = [{...viewData, 'module_name': addEditApi, 'payload': {...apiData}, 'api': `/${addEditApi}`, 'response':[], 'error_details': err , 'status_code': err.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
+                logData = [{...viewData, 'module_name': addEditApi, 'payload': {...apiData}, 'api': `/${addEditApi}`, 'response':[], 'error_details': err , 'status_code': err.response.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
                 if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                     recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
                 }
-                return err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response}
+                return (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response}
         )
 }
 
@@ -1053,11 +1054,11 @@ export const saveReportDetailsAPIdata = (tenantCname, apiData) => {
         })
         .catch(
             err => {
-                logData = [{...viewData, 'module_name': 'report', 'payload': {...apiData}, 'api': `/${'savereportdatabyuser'}`, 'response':[], 'error_details': err , 'status_code': err.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
+                logData = [{...viewData, 'module_name': 'report', 'payload': {...apiData}, 'api': `/${'savereportdatabyuser'}`, 'response':[], 'error_details': err , 'status_code': err.response.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
                 if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                     recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
                 }
-                return err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response}
+                return (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response}
         )
 }
 
@@ -1079,11 +1080,11 @@ export const getReportAfterCreatedata = (tenantCname, apiEndPoint, reportId) => 
             })
         .catch(
             err => {
-                logData = [{...viewData, 'module_name': apiEndPoint, 'payload': {'report_id': reportId}, 'api': `/${apiEndPoint}`, 'response':[], 'error_details': err , 'status_code': err.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
+                logData = [{...viewData, 'module_name': apiEndPoint, 'payload': {'report_id': reportId}, 'api': `/${apiEndPoint}`, 'response':[], 'error_details': err , 'status_code': err.response.status, 'company_id': localStorage.getItem('companyId') || sessionStorage.getItem('companyId'), 'user_id': sessionStorage.getItem('userid')}];
                 if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
                     recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
                 }
-                return err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response}
+                return (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response}
         )
 }
 
@@ -1099,5 +1100,5 @@ export const recordErrorAPIdata = (tenantCname, apiData) => {
         }
     )
         .then(res => res)
-        .catch(err => err?.response?.data.error === 'Unauthenticated' ? (sessionStorage.removeItem('user')) : err.response)
+        .catch(err => (err?.response?.data.error === 'Unauthenticated' || err?.response?.data.error === 'Server Error') ? (sessionStorage.removeItem('user')) : err.response)
 }

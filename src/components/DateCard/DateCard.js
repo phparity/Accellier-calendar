@@ -1,6 +1,6 @@
-import React from 'react'
-
-import './DateCard.scss'
+import React from "react";
+import PropTypes from 'prop-types';
+import "./DateCard.scss";
 
 /**
  * Renders a date card component with the given DateText and DayText.
@@ -12,17 +12,20 @@ import './DateCard.scss'
  */
 function DateCard({ DateText, DayText, className }) {
   return (
-    <div className={`date_card_otr ${className}`}>
-      <div className='date_card_inr'>
-        <h3 className='date_text'>
-          {DateText}
-        </h3>
-        <p className='day_text'>
-          {DayText}
-        </p>
+    <div data-testid="date-card-outer" className={`date_card_otr ${className}`}>
+      <div className="date_card_inr">
+        <h3 className="date_text">{DateText}</h3>
+        <p className="day_text">{DayText}</p>
       </div>
     </div>
-  )
+  );
 }
 
-export default DateCard
+// Define prop types for the component
+DateCard.propTypes = {
+  DateText: PropTypes.string,
+  DayText: PropTypes.string,
+  className: PropTypes.string
+};
+
+export default DateCard;

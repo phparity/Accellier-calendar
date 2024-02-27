@@ -15,6 +15,6 @@ export const NOTESMODULE="home/:prev_module_name/relatedlist/nn/:pvid"
 export const REPORTDETAILSPAGE="home/:module_name/reportdetails/:reportid"
 export const CREATEREPORTMODULEPAGE = "/home/:module_name/add-edit-report"
 export const REPORTCREATEPAGE="home/:module_name/add-edit-report/:said"
-export const EVENTMANAGEMENTPAGE="home/event"
+export const EVENTMANAGEMENTPAGE="home/event/calendar"
 
 export const RELATEDETAILEDVIEW = "/home/:r_module_name/relatedlist/:r_id/:module_name/detail/:id"

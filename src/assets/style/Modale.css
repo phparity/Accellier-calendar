@@ -11,7 +11,7 @@
 }
 .modal.show{
   padding-right: 0 !important;
-  z-index: 9999 !important;}
+  z-index: 99999 !important;}
 .cder{
   display: flex !important;
 }

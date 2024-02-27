@@ -5,7 +5,7 @@ import LeftArrowIcon from "../../assets/images/arrow-left.svg";
 import RightArrowIcon from "../../assets/images/arrow-right.svg";
 import "./DateSlider.scss";
 import PostCard from "../PostCard/PostCard";
-import PostCardList from "../PostCard/PostCardList";
+import PropTypes from 'prop-types';
 
 /**
  * Generates a date slider component with the ability to navigate through dates and display events for each date.
@@ -17,7 +17,7 @@ import PostCardList from "../PostCard/PostCardList";
 const DateSlider = ({ selectedDate, eventListData }) => {
   // Initialize currentDate state with selectedDate if it exists, otherwise use current date
   const [currentDate, setCurrentDate] = useState(
-    selectedDate ? new Date(selectedDate) : new Date()
+    selectedDate ? new Date(selectedDate) : new Date(),
   );
   // This hook initializes the state variable daysPerPage with a default value of 7
   const [daysPerPage, setDaysPerPage] = useState(7);
@@ -35,7 +35,13 @@ const DateSlider = ({ selectedDate, eventListData }) => {
   const getDayOfWeek = (dayIndex) => {
     // Array of days in a week
     const daysOfWeek = [
-      "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
     ];
     // Return the day based on the index
     return daysOfWeek[dayIndex % daysOfWeek.length];
@@ -49,9 +55,18 @@ const DateSlider = ({ selectedDate, eventListData }) => {
   const getMonthName = (monthIndex) => {
     // Array of month names
     const months = [
-      "January", "February", "March", "April",
-      "May", "June", "July", "August",
-      "September", "October", "November", "December"
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
     ];
     // Return the month name based on the index
     return months[monthIndex % months.length];
@@ -81,17 +96,17 @@ const DateSlider = ({ selectedDate, eventListData }) => {
         <DateCard
           key={i + offset}
           DateText={`${getMonthName(
-            date.getMonth()
+            date.getMonth(),
           )} ${date.getDate()}, ${date.getFullYear()}`}
           DayText={getDayOfWeek(date.getDay())}
           className={isActive ? "current_date" : ""}
-        />
+        />,
       );
       // Filter the event list data for the current date
       const postCardData = eventListData.filter(
         (post) =>
           post.date ===
-          `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
+          `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`,
       );
       // Create post card components and add them to the post cards array
       if (postCardData.length > 0) {
@@ -118,51 +133,28 @@ const DateSlider = ({ selectedDate, eventListData }) => {
    */
   const handleSwipe = (days) => {
     // Calculate the new date by adding the specified number of days to the current date
-    setCurrentDate(new Date(currentDate.getTime() + days * 24 * 60 * 60 * 1000));
+    setCurrentDate(
+      new Date(currentDate.getTime() + days * 24 * 60 * 60 * 1000),
+    );
   };
   // Set up swipe handlers
-  // const handlers = useSwipeable({
-  //   onSwipedLeft: () => handleSwipe(1), // Call handleSwipe with 1 when swiped left
-  //   onSwipedRight: () => handleSwipe(-1), // Call handleSwipe with -1 when swiped right
-  //   preventDefaultTouchmoveEvent: true, // Prevent default touchmove event
-  //   trackMouse: true, // Enable tracking of mouse events
-  //   delta: 30,                             // min distance(px) before a swipe starts. *See Notes*
-  //   trackTouch: true,                      // track touch input
-  //   swipeDuration: Infinity,               // allowable duration of a swipe (ms). *See Notes*
-  //   touchEventOptions: { passive: true },
-  // });
   const handlers = useSwipeable({
     onSwipedLeft: () => handleSwipe(1), // Call handleSwipe with 1 when swiped left
     onSwipedRight: () => handleSwipe(-1), // Call handleSwipe with -1 when swiped right
     preventDefaultTouchmoveEvent: true, // Prevent default touchmove event
     trackMouse: true, // Enable tracking of mouse events
-    delta: 10,                             // min distance(px) before a swipe starts. *See Notes*
+    delta: 30,                             // min distance(px) before a swipe starts. *See Notes*
+    trackTouch: true,                      // track touch input
     swipeDuration: Infinity,               // allowable duration of a swipe (ms). *See Notes*
     touchEventOptions: { passive: true },
-    swipeDuration: 500,
-    preventScrollOnSwipe: true,
-    trackMouse: true
   });
 
   useEffect(() => {
     /*
-    * updateColumns - updates the number of days per page based on the screen width
-    */
+     * updateColumns - updates the number of days per page based on the screen width
+     */
     const updateColumns = () => {
       const screenWidth = window.innerWidth;
-      // if (screenWidth >= 1800) {     
-      //   setDaysPerPage(7); // set 7 days per page for large screens
-      // } else if (screenWidth >= 1700) { 
-      //   setDaysPerPage(5); // set 5 days per page for medium screens
-      // } else if (screenWidth >= 1340) {
-      //   setDaysPerPage(4); // set 4 days per page for medium screens 
-      // }else if (screenWidth >= 992) {
-      //   setDaysPerPage(3); // set 3 days per page for small screens
-      // } else if (screenWidth >= 767) {
-      //   setDaysPerPage(2); // set 2 days per page for small screens
-      // } else {
-      //   setDaysPerPage(1); // set 1 day per page for extra small screens
-      // } 
       if (screenWidth >= 1250) {
         setDaysPerPage(7); // set 7 days per page for large screens
       } else if (screenWidth >= 1024) {
@@ -183,25 +175,47 @@ const DateSlider = ({ selectedDate, eventListData }) => {
     };
   }, []);
 
+  /**
+   * Handle key press event and perform action based on the direction.
+   *
+   * @param {Object} event - The key press event object
+   * @param {string} direction - The direction of the action
+   */
+  const handleKeyPress = (event, direction) => {
+    if (event.key === "Enter") {
+      handleSwipe(direction);
+    }
+  };
+
   return (
     <div className="management_dates" {...handlers}>
-      <div className="date_cards_otr">{renderDays().days}</div>
+      <div data-testid="date-card" className="date_cards_otr">
+        {renderDays().days}
+      </div>
       <div className="arrows_otr">
         <div
+          data-testid="left-arrow"
           className="arrow_otr left_arrow"
           onClick={() => handleSwipe(-1)}
+          onKeyPress={(e) => handleKeyPress(e, -1)} 
+          role="button"
+          tabIndex={0} 
         >
-          <img className="arrow_icon" src={LeftArrowIcon} alt="icon" />
+          <img className="arrow_icon" src={LeftArrowIcon} alt="left-icon" />
         </div>
         <div
+          data-testid="right-arrow"
           className="arrow_otr right_arrow"
           onClick={() => handleSwipe(1)}
+          onKeyPress={(e) => handleKeyPress(e, 1)} 
+          role="button"
+          tabIndex={0} 
         >
-          <img className="arrow_icon" src={RightArrowIcon} alt="icon" />
+          <img className="arrow_icon" src={RightArrowIcon} alt="right-icon" />
         </div>
       </div>
 
-      <div className="post_row_custom">
+      <div data-testid="post-card" className="post_row_custom">
         {Object.keys(renderDays().postCards).map((dayIndex) => (
           <div key={dayIndex} className="post_cards_otr">
             {renderDays().postCards[dayIndex]}
@@ -210,6 +224,11 @@ const DateSlider = ({ selectedDate, eventListData }) => {
       </div>
     </div>
   );
+};
+
+DateSlider.propTypes = {
+  selectedDate: PropTypes.string,
+  eventListData: PropTypes.array,
 };
 
 export default DateSlider;

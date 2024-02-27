@@ -3,8 +3,7 @@ import axios from "axios";
 const instance = axios.create({
   // baseURL: "https://api.automateevents.com"
   // baseURL: "https://events-dev1.accellier.net/saasevent/public"
- baseURL: "https://dev-api.automateevents.com:8444/"
-
+  baseURL: "https://dev-api.automateevents.com:8444/"
 });
 
 export default instance;

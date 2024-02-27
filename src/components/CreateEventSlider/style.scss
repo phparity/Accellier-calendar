@@ -1,1 +1,125 @@
-.offcanvas.hiding, .offcanvas.show, .offcanvas.showing{z-index: 9999;}
+.offcanvas.hiding,
+.offcanvas.show,
+.offcanvas.showing {
+  z-index: 9999;
+}
+
+.create_event_btn.event_action_btn {
+  width: 100%;
+  padding: 10px 0 3em;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+
+  .btn {
+    max-width: 100px;
+    margin: 0 6px;
+    height: auto;
+  }
+}
+.createEvent.detail_parent.parent_padding {
+  margin-top: 0;
+  padding-bottom: 0;
+}
+.createEvent.parent_div {
+  padding: 0;
+  line-height: inherit;
+  .event-group {
+    margin-bottom: 10px;
+  }
+}
+.eventCreateForm {
+  background-color: #f8f9fc;
+  padding: 18px 0;
+  height: 100%;
+  @media (max-width: 575px) {
+      width: 100% !important;
+  }
+
+  .page_heading {
+    font-size: 20px !important;
+  }
+  .close_btn {
+    text-align: right;
+    .closeButton{
+      width: 18px;
+      height: 18px;
+      right: 15px;
+      position: static;
+      margin-top: 0;
+      margin-right: 0;
+      svg{
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  
+}
+.headingRow {
+  margin: 0 0 20px;
+  padding: 0 20px;
+}
+.event-group ::-webkit-input-placeholder {
+  text-transform: capitalize;
+}
+
+.event-group :-moz-placeholder {
+  text-transform: capitalize;
+}
+
+.event-group ::-moz-placeholder {
+  text-transform: capitalize;
+}
+
+.event-group :-ms-input-placeholder {
+  text-transform: capitalize;
+}
+.sortWrap  {
+  .card-box {
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;
+    border: 0;
+    box-shadow: none;
+    border-radius: 4px;
+    &::before {
+      display: none;
+    }
+
+    .card-box-header {
+      min-height: auto;
+
+      .MuiAccordionSummary-content { 
+        margin: 15px 0;
+      }
+    }
+    .card-box-body {
+      padding: 20px 20px 0 20px;
+      border-top: 2px solid #F5F5F5;
+
+      .event-group {
+        margin-bottom: 20px;
+        label  {
+          font-size: 14px;
+          color: #2C3B49;
+          font-weight: 500; 
+          line-height: 14px;
+          margin-bottom: 5px;
+        } 
+        input:not([type=range]),  select, textarea{
+            margin-top: 0 !important;
+            border: 1px solid #F5F5F5;
+            height: 40px;
+            color: #000000;
+            font-size: 14px !important;
+            border-radius: 5px;
+        }
+        .input-group-text {
+          margin-top: 0 !important;
+          height: 40px;
+        }
+      }
+    }
+  }
+
+}

@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 
-import './ThemeButton.scss'
+import "./ThemeButton.scss";
 
 /**
  * Renders a themed button with the specified class and text, and handles the onClick event.
@@ -10,13 +10,13 @@ import './ThemeButton.scss'
  * @param {function} onClick - The function to be called when the button is clicked.
  * @return {JSX.Element} The themed button component.
  */
-function ThemeButton({buttonClass, buttonText, onClick}) {
-    // Create a themed button with the specified class and text
-    return (
-        <button onClick={onClick} className={`theme_btn ${buttonClass}`}>
-            {buttonText}
-        </button>
-    );
+function ThemeButton({ buttonClass, buttonText, onClick }) {
+  // Create a themed button with the specified class and text
+  return (
+    <button onClick={onClick} className={`theme_btn ${buttonClass}`}>
+      {buttonText}
+    </button>
+  );
 }
 
-export default ThemeButton
+export default ThemeButton;

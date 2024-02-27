@@ -4,7 +4,8 @@ import i18n from "../config/i18n"
 import "../assets/style/CustomerList.css"
 import "../assets/style/Modale.css"
 import {  Trans } from 'react-i18next'
-import {Modal, Button} from "react-bootstrap"
+import {Button, ThemeProvider} from "react-bootstrap"
+import { Modal } from "react-bootstrap"
 import Dropdown from "react-bootstrap/Dropdown"
 import {MdModeEdit} from "react-icons/md"
 import {MdDelete} from "react-icons/md"
@@ -72,8 +73,11 @@ const ActionDropdown = (props) =>{
     }
     
     let module_name = CheckModuleName()
-    const handleQueryString = useLocation().search;
-
+    // added for jest
+    // const handleQueryString = useLocation().search; 
+    const location = useLocation();
+    const handleQueryString = location ? location.search : '';
+    
     let nice = ""
 
   let logData = [];
@@ -85,9 +89,16 @@ const ActionDropdown = (props) =>{
       nice = handleQueryString.replace('?','').replace(/%20/g, " ")
     }, [module_name])
     
-
-    localStorage.setItem("prev_module_name", module_name)
+// Ensure module_name is defined and convert it to a string if needed added for jestt
+if (module_name !== undefined && module_name !== null) {
+    module_name = String(module_name);
+    
+    // Set the item in localStorage
+    localStorage.setItem("prev_module_name", module_name);
     localStorage.setItem("prev_module_name2", module_name)
+  }
+    // localStorage.setItem("prev_module_name", module_name);
+    // localStorage.setItem("prev_module_name2", module_name)
     const[dtCustList,setDtCustList] =useState()
     const [multiDtCustList, setMultiDtCustList] = useState()
     const [exportRecord1, setExportRecord1] = useState()
@@ -195,7 +206,7 @@ const ActionDropdown = (props) =>{
             }
             logData = [{...viewData, 'module_name': module_name, 'api': `/${forthis}export`, 'payload':{
                 "records": exp_cus_id
-            }, 'response':[], 'error_details': err, 'status_code':'' }];
+            }, 'response':[], 'error_details': err, 'status_code':err.response.status }];
             if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
               recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
             }
@@ -221,7 +232,7 @@ const ActionDropdown = (props) =>{
             if(module_name !== "calendar"){
             // alert("Error. Please retry")
             }
-            logData = [{...viewData, 'module_name': module_name, 'api': `/${forthis}export`, 'payload':'', 'response':[], 'error_details': err, 'status_code':'' }];
+            logData = [{...viewData, 'module_name': module_name, 'api': `/${forthis}export`, 'payload':'', 'response':[], 'error_details': err, 'status_code': err.response.status }];
             if(Number(process.env.REACT_APP_DEBUG_MODE) === 1 || Number(sessionStorage.getItem('debugMode')) === 1){ 
               recordErrorAPIdata(localStorage.getItem('tenant_cname'), ...logData);
             }
@@ -290,7 +301,8 @@ const ActionDropdown = (props) =>{
             return item.original
         })
         setSelectRows(newArr)
-    }, [selectedFlatRows.length])
+    }, [selectedFlatRows?.length])
+// }, [selectedFlatRows.length])  commented for test case
 
     const bulk_edit=()=>(
         selectedFlatRows.length != 0 ?
@@ -368,7 +380,7 @@ const ActionDropdown = (props) =>{
         <div>
                 {/* <div className="top_btns"> */}
                     
-                {(details.module_access !== 0 && details.module_access < 6 ) &&   <div className="bulk_icons" >
+                {(details?.module_access !== 0 && details?.module_access < 6 ) &&   <div className="bulk_icons" >
                          {module_name === "report" ?
                          localStorage.getItem("roleid") !== "1" ? null :
                             <Dropdown className="btn_actions" onClick={export_customer}>
@@ -417,6 +429,7 @@ const ActionDropdown = (props) =>{
                         </div>}
                 {/* </div>        */}
             <Modal show={show2} onHide={handleClose4} className="import_modal fade small_modal modal">
+
                 <Modal.Header>
                 <Modal.Title><h4 className="import_heading">Import <Trans>{module_name}</Trans></h4></Modal.Title>
                 </Modal.Header>
@@ -442,9 +455,12 @@ const ActionDropdown = (props) =>{
                     Import
                 </Button>
                 </Modal.Footer>
+       
             </Modal> 
 
             <Modal show={show3} onHide={handleClose4} className="modal_delete fade small_modal modal">
+                <ThemeProvider theme="react-bootstrap">
+                </ThemeProvider>
                 <Modal.Header>
                 <Modal.Title> <Trans>Delete {module_name}</Trans>{props.selectflatrows.length <= 1 ? "" : "(s)"}</Modal.Title>
                 </Modal.Header>
@@ -484,6 +500,7 @@ const ActionDropdown = (props) =>{
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
+              
                     <Button className="secondary reset_button" onClick={handleClose4}>
                         Cancel
                     </Button>

@@ -99,7 +99,7 @@ function PostCard({ PostListData }) {
     const isMultiDay = cardClass.includes('multi_days');
     return (
         <div className={`post_card_inr ${cardClass}`}>
-            <div className='card_header' onClick={handleToggle}>
+            <div data-testid="card-header" className='card_header' onClick={handleToggle}>
                 <div className='heading_tag'>
                     <h3 className='card_heading' title={cardHeading}>
                         <Link to={'/eventmanagement'}>
@@ -129,7 +129,7 @@ function PostCard({ PostListData }) {
                     </div>
                 </div>
             </div>
-            <div className={`card_body ${isOpenByDefault ? 'card_body_visible' : ''}`}>
+            <div data-testid="card-body" className={`card_body ${isOpenByDefault ? 'card_body_visible' : ''}`}>
                 <div className='profile_otr'>
                     <img className='profile_img' src={profileImg} alt='img' />
                     <div className='profile_text'>
