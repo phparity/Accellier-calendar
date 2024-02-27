@@ -498,11 +498,11 @@ const CreateEventSlider = (props) => {
             apiPathData,
           }}
         >
-          <div className="createEvent detail_parent mt-0">
+          <div className="createEvent detail_parent mt-0 pb-0">
             <div className="container-fluid col-12 pl-4 pr-4">
               {blocke != "[]" ? (
                 <div className="row pr-1">
-                  <div className="createEvent parent_div col-12">
+                  <div className="createEvent parent_div col-12 mb-0">
                     <form>
                       <div className="sortWrap">
                         {blocke &&

@@ -6,7 +6,7 @@
 
 .create_event_btn.event_action_btn {
   width: 100%;
-  padding: 10px 0 3em;
+  padding: 0;
   align-items: center;
   justify-content: center;
   background-color: transparent;
@@ -38,6 +38,7 @@
 
   .page_heading {
     font-size: 20px !important;
+    margin-bottom: 0;
   }
   .close_btn {
     text-align: right;
@@ -88,17 +89,18 @@
 
     .card-box-header {
       min-height: auto;
+      padding: 0 10px;
 
       .MuiAccordionSummary-content { 
-        margin: 15px 0;
+        margin: 10px 0;
       }
     }
     .card-box-body {
-      padding: 20px 20px 0 20px;
-      border-top: 2px solid #F5F5F5;
+      padding: 10px 10px 0 10px;
+      border-top: 2px solid #D5DBE1;
 
       .event-group {
-        margin-bottom: 20px;
+        margin-bottom: 18px;
         label  {
           font-size: 14px;
           color: #2C3B49;
@@ -108,7 +110,7 @@
         } 
         input:not([type=range]),  select, textarea{
             margin-top: 0 !important;
-            border: 1px solid #F5F5F5;
+            border: 1px solid #D5DBE1;
             height: 40px;
             color: #000000;
             font-size: 14px !important;
